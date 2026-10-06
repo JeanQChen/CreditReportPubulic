@@ -411,6 +411,7 @@ Pack/Writer 材料或数字权威；图片可见不等于正文可引用其中�
 - [DOCUMENTATION_INDEX.md](./DOCUMENTATION_INDEX.md) —— 文档权威顺序
 - [DESIGN_V2.md](./DESIGN_V2.md) —— 现行设计
 - [evaluation/README.md](./evaluation/README.md) —— 评测入口说明
+- [https://waypointean.com/projects/credit-report] —— 网页端图解说明
 
 这些文档出自内部工作仓库，描述的是**内部**项目的进展与判据；其中引用的历史 run、
 `evaluation/results/` 目录和一次性探针路径在本副本中**不存在**。
