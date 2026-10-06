@@ -1,0 +1,66 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Test/lint cache ---
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Secrets (CRITICAL: never commit) ---
+.env
+
+# --- User-supplied source material (third-party rights; never redistribute) ---
+data/**/*.pdf
+data/**/*.xlsx
+data/**/*.xls
+data/**/*.docx
+
+# Public copy: the six case inputs shipped under data/samples/300750/ are deliberately
+# re-included, so that a clone of this copy can still run the offline demo with no
+# external downloads. They are NOT verified as licensed for redistribution, and the
+# three workbooks are operator-assembled rather than official published files - read
+# README before re-publishing this copy anywhere public.
+!data/samples/300750/announcements/*.pdf
+!data/samples/300750/financial/*.xlsx
+
+# --- Databases and caches (generated at runtime) ---
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/cache/*
+!data/cache/.gitkeep
+data/chroma/
+data/chroma_v2/
+data/index_v2/
+data/sparse_v2/
+data/financial_objects/
+
+# --- Demo run inputs and one-shot run authorizations (operational records) ---
+data/run_inputs/
+data/run_authorizations/
+
+# --- Logs ---
+logs/
+
+# --- Generated run outputs ---
+evaluation/results/
+evaluation/rubric_runs/
+evaluation/showcase/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/*.code-workspace
+.vscode/launch.local.json

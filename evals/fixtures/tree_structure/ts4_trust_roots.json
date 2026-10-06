@@ -1,0 +1,329 @@
+{
+  "documents": {
+    "FIXTURE_BOND_2026": {
+      "artifacts": {
+        "document_outline.json": {
+          "sha256": "fa97bb63fb853c13592d92332fcedd49f2ea3fd5dd47ef27238c4be57ecf5fe6",
+          "size": 18433
+        },
+        "formal_unassigned.json": {
+          "sha256": "95fe031d4d016279e03a7d8157fd9d9b8baa01669f29bcb2ff10e7f6d5d3e93d",
+          "size": 1658
+        },
+        "line_assignment_buckets.json": {
+          "sha256": "00d252003068bba2a3f38448cda65cfcb0df5a51ed9af588e16e3553ea01d369",
+          "size": 11478
+        },
+        "line_structure_assignment.json": {
+          "sha256": "aa51ed9c504c655379a98cc7250d2d91ccc5968988b1ba5a4720653f933a13c1",
+          "size": 23324
+        },
+        "manifest.json": {
+          "sha256": "002e0652a89931fd6653d5655cb5e68294e2963b58f55f8c8809114aaa6b1aaf",
+          "size": 5983
+        },
+        "normalization_alignment.json": {
+          "sha256": "b06ee24bf011d9fb1a794ea9afbd9e1c0c3637c5a18272bb049bc8a2cbd17e4c",
+          "size": 727
+        },
+        "page_layout.json": {
+          "sha256": "fef5c84fb01ce1eec6aed08e2cae466e802f3371ee4123003eca8b51bcbf0eb4",
+          "size": 38429
+        }
+      },
+      "expected_alignment": {
+        "block_count": 0,
+        "evidence_set_version": null,
+        "terminal_schema_versions": {},
+        "terminals_emitted": 0
+      },
+      "expected_identity": {
+        "company_id": "555555",
+        "document_id": "FIXTURE_BOND_2026",
+        "document_version": "sha256-d2404f674f81e788",
+        "formal_unassigned_count": 1,
+        "input_sha256": "d2404f674f81e78873cc62dc7cb1eff76a5d02230b97d95ad6028a8233381fb8",
+        "input_size": 21301,
+        "outline_builder_version": "oa-3",
+        "outline_content_fingerprint": "b67e569c7cf328b6cbdef655b255700f241bdf8e116577a258799517feb9cc9f",
+        "outline_id": "do-b67e569c7cf328b6",
+        "outline_locator": "loc-do-27bfe6bf5abae3b1",
+        "page_count": 9,
+        "page_layout_id": "pl-4da686515658259e",
+        "page_layout_locator": "loc-pl-9a02d5a2a6a4ba97",
+        "schema_version": "do-4"
+      }
+    },
+    "NDSD_2024_year": {
+      "artifacts": {
+        "document_outline.json": {
+          "sha256": "c8632e7db33bf7ffb3ad216ae93fbd03f5912d0f6ab0ad7640a4296e33211e58",
+          "size": 843076
+        },
+        "formal_unassigned.json": {
+          "sha256": "50b6225ac4b4537068ae2e3ea791d5165276678f294a82553fa979d123d4d9d3",
+          "size": 117289
+        },
+        "line_assignment_buckets.json": {
+          "sha256": "bd8e2ecc3e81964ddc4706ee3ceb7d65b9862fe4eabd988ec1779177e27c6a09",
+          "size": 3114944
+        },
+        "line_structure_assignment.json": {
+          "sha256": "99f49cf4f16fa9494ae1b233690d8fd9a7649340ab8fc14e583c7526fec722ce",
+          "size": 6834189
+        },
+        "manifest.json": {
+          "sha256": "acaf50e10e08d5eaa447e87d5400488dc2533a35ae1e3afc4844a55264cd9d77",
+          "size": 8426
+        },
+        "normalization_alignment.json": {
+          "sha256": "ba8b089d786adaaedfe8419fd5a9d9a8ca24cb1723ffdb86edaab475a511ae72",
+          "size": 2553814
+        },
+        "page_layout.json": {
+          "sha256": "a0e6aa8f15248c692f3796a092cc76695402153dc27673103e75e5a371b6eb9d",
+          "size": 10785687
+        }
+      },
+      "expected_alignment": {
+        "block_count": 292,
+        "evidence_set_snapshot": {
+          "block_count": 292,
+          "company_id": "300750",
+          "document_id": "NDSD_2024_year",
+          "document_version": "sha256-b4f1713d7b821eb0",
+          "evidence_set_version": "set-501395a7ad5a",
+          "fingerprint": "b726d2824272e9893ef7f87a0566ac4733a404801c854a4270905255ff637b51",
+          "gateway_version": "esg-1",
+          "snapshot_version": "ess-1",
+          "status": "current"
+        },
+        "evidence_set_version": "set-501395a7ad5a",
+        "member_identity_sha256": "9477a793baff36b28add62df686f5fd3cdf4c1f552727ddb8001bedb6ee22616",
+        "terminal_schema_versions": {
+          "AlignmentRefusalRecord@alr-2": 1,
+          "TextAlignmentRecord@als-3": 291
+        },
+        "terminals_emitted": 292,
+        "terminals_missing_count": 0
+      },
+      "expected_identity": {
+        "company_id": "300750",
+        "document_id": "NDSD_2024_year",
+        "document_version": "sha256-b4f1713d7b821eb0",
+        "formal_unassigned_count": 97,
+        "input_sha256": "b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad",
+        "input_size": 2070073,
+        "outline_builder_version": "oa-3",
+        "outline_content_fingerprint": "033a3c52a2e06646b17157e4c5c5adc91f539dcd7466ad03e620dfde85adedb5",
+        "outline_id": "do-033a3c52a2e06646",
+        "outline_locator": "loc-do-5a0b6af828252b9b",
+        "page_count": 229,
+        "page_layout_id": "pl-adb33600b2c0ddc5",
+        "page_layout_locator": "loc-pl-81ceb756419dc0a8",
+        "schema_version": "do-4"
+      },
+      "source_pdf_relpath": "data/samples/300750/announcements/NDSD_2024_year.pdf",
+      "source_pdf_sha256": "b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad",
+      "source_pdf_size": 2070073
+    },
+    "NDSD_2025_year": {
+      "artifacts": {
+        "document_outline.json": {
+          "sha256": "f70a87a5dcbaecfae7483b479df49bff15da9ec7c1848a4879c7962b9888e5e3",
+          "size": 849970
+        },
+        "formal_unassigned.json": {
+          "sha256": "9de1c9c4290cd8b20c6994cb0e4ee6df585c28181f1fa5f26ebfe76afb829f33",
+          "size": 136967
+        },
+        "line_assignment_buckets.json": {
+          "sha256": "235d9243eb220a6cb222faf71c05c2cdc8f97d884c6a75e5d2d4959e4730fd3f",
+          "size": 2946782
+        },
+        "line_structure_assignment.json": {
+          "sha256": "e49b7209fe9b71bbc5f42391b7d0fc0f1604664cb36d58c68b2adec335e01e8d",
+          "size": 6456997
+        },
+        "manifest.json": {
+          "sha256": "e7abbf5650263ade2418610b21a4e16ef56b0965f235a0cab6d020b7d5159173",
+          "size": 8534
+        },
+        "normalization_alignment.json": {
+          "sha256": "6517dddf5bf2153a9c5c0afb263ce484eb752cc666e91c33e1dce00a0cb95d94",
+          "size": 2476985
+        },
+        "page_layout.json": {
+          "sha256": "c331b495e1055b57fd52e6a0ca4a9b2c7e234c90b6580d38ccd9902aba1ff3ee",
+          "size": 10145071
+        }
+      },
+      "expected_alignment": {
+        "block_count": 300,
+        "evidence_set_snapshot": {
+          "block_count": 300,
+          "company_id": "300750",
+          "document_id": "NDSD_2025_year",
+          "document_version": "sha256-c15272977147dee7",
+          "evidence_set_version": "set-501395a7ad5a",
+          "fingerprint": "924b61fa986ca0dbe4731e9a519a95418f91833402e96da7ef37713d838c909c",
+          "gateway_version": "esg-1",
+          "snapshot_version": "ess-1",
+          "status": "current"
+        },
+        "evidence_set_version": "set-501395a7ad5a",
+        "member_identity_sha256": "c4fe7932f407b4d296edc2596ea4b9119050721774026878cc9813af8c51109b",
+        "terminal_schema_versions": {
+          "TextAlignmentRecord@als-3": 300
+        },
+        "terminals_emitted": 300,
+        "terminals_missing_count": 0
+      },
+      "expected_identity": {
+        "company_id": "300750",
+        "document_id": "NDSD_2025_year",
+        "document_version": "sha256-c15272977147dee7",
+        "formal_unassigned_count": 113,
+        "input_sha256": "c15272977147dee7e6935a38ea0e4fd6855370aabb106f54cfe20f7cf6048ec9",
+        "input_size": 2043710,
+        "outline_builder_version": "oa-3",
+        "outline_content_fingerprint": "5cb1610472fa3eacdbd00b116f3da945d835b6a38bfdf017f68512ff57389535",
+        "outline_id": "do-5cb1610472fa3eac",
+        "outline_locator": "loc-do-3e45ed3ce8036642",
+        "page_count": 232,
+        "page_layout_id": "pl-fbeeb6a5a25e5e24",
+        "page_layout_locator": "loc-pl-797ea2c0f467d449",
+        "schema_version": "do-4"
+      },
+      "source_pdf_relpath": "data/samples/300750/announcements/NDSD_2025_year.pdf",
+      "source_pdf_sha256": "c15272977147dee7e6935a38ea0e4fd6855370aabb106f54cfe20f7cf6048ec9",
+      "source_pdf_size": 2043710
+    },
+    "NDSD_KCZ_2026": {
+      "artifacts": {
+        "document_outline.json": {
+          "sha256": "f2221bff988cb66a404a62a1d2e27094bd12932c2b4dd19a9363c3a87b27a4fd",
+          "size": 498495
+        },
+        "formal_unassigned.json": {
+          "sha256": "0a434edb11927bf622e065ab8ae0b15b0e58ca083eda1d9a15f3eed5357e664e",
+          "size": 26118
+        },
+        "line_assignment_buckets.json": {
+          "sha256": "8088a25a29dcb7d30d26b3837757e7c246bb8ad81175076c627bae540a451116",
+          "size": 1357455
+        },
+        "line_structure_assignment.json": {
+          "sha256": "e218f26d75b9cd988d9a8bf12d495b457d80114ed9c5f2ba2737a9d285138cdb",
+          "size": 2966274
+        },
+        "manifest.json": {
+          "sha256": "1757a7fe3ccd650ca2614ff913471e8099f787f223c68248cf5beeefd014e116",
+          "size": 9457
+        },
+        "normalization_alignment.json": {
+          "sha256": "ccc03d19112452c13c024dc5f1e220120f02595b9d76773d1f016ecc1a452214",
+          "size": 1352696
+        },
+        "page_layout.json": {
+          "sha256": "cd59c219112fb99111eeb6bfb33dcf9ac6ca6558132bddd25ca970e9130f2c61",
+          "size": 4578452
+        }
+      },
+      "expected_alignment": {
+        "block_count": 177,
+        "evidence_set_snapshot": {
+          "block_count": 177,
+          "company_id": "300750",
+          "document_id": "NDSD_KCZ_2026",
+          "document_version": "sha256-2b3a1fb3de97f23c",
+          "evidence_set_version": "set-501395a7ad5a",
+          "fingerprint": "3bd9e69110a86a1635ec33d733fb693587fe7a934ff19779045bf28af9af93e7",
+          "gateway_version": "esg-1",
+          "snapshot_version": "ess-1",
+          "status": "current"
+        },
+        "evidence_set_version": "set-501395a7ad5a",
+        "member_identity_sha256": "50f22bf9e6d4c2bce9229d2b386647d134febbe568ea3cfd7904a6cd6cdb8301",
+        "terminal_schema_versions": {
+          "TextAlignmentRecord@als-3": 177
+        },
+        "terminals_emitted": 177,
+        "terminals_missing_count": 0
+      },
+      "expected_identity": {
+        "company_id": "300750",
+        "document_id": "NDSD_KCZ_2026",
+        "document_version": "sha256-2b3a1fb3de97f23c",
+        "formal_unassigned_count": 21,
+        "input_sha256": "2b3a1fb3de97f23c9e6fc8c0d54adf0633265bb1b452a881d15bd3a0ba286dae",
+        "input_size": 1558483,
+        "outline_builder_version": "oa-3",
+        "outline_content_fingerprint": "cebf59f3bd906aa2c667aa815cf782759b2bfdc0037fdedb618b5dbded7baeb8",
+        "outline_id": "do-cebf59f3bd906aa2",
+        "outline_locator": "loc-do-7cd9f26c2d5cc8de",
+        "page_count": 141,
+        "page_layout_id": "pl-f283073e548e2252",
+        "page_layout_locator": "loc-pl-88bd25211b92012c",
+        "schema_version": "do-4"
+      },
+      "source_pdf_relpath": "data/samples/300750/announcements/NDSD_KCZ_2026.pdf",
+      "source_pdf_sha256": "2b3a1fb3de97f23c9e6fc8c0d54adf0633265bb1b452a881d15bd3a0ba286dae",
+      "source_pdf_size": 1558483
+    }
+  },
+  "fixture_bond_pdf_relpath": "evaluation/results/tree_structure_ts3_outline_ts3_outline_tocr2_closure_p2final_20260918T130000Z/fixture_non_300750_bond.pdf",
+  "fixture_bond_pdf_sha256": "d2404f674f81e78873cc62dc7cb1eff76a5d02230b97d95ad6028a8233381fb8",
+  "fixture_bond_pdf_size": 21301,
+  "fixture_kind": "ts4_trust_root_v1",
+  "frozen_run_relpath": "evaluation/results/tree_structure_ts3_outline_ts3_outline_tocr2_closure_p2final_20260918T130000Z",
+  "frozen_versions": {
+    "align_min": 0.9,
+    "align_refusal_schema_version": "alr-2",
+    "align_schema_version": "als-3",
+    "aligner_version": "al-3",
+    "evidence_block_input_version": "ebi-2",
+    "heading_qualification_profile_version": "hq-4",
+    "normalization_version": "norm-1",
+    "outline_builder_version": "oa-3",
+    "schema_version": "do-4",
+    "table_region_qualification_version": "trg-3",
+    "toc_body_reconciliation_version": "tocr-2"
+  },
+  "lock_semantics": "只读信任锚：TS4 正式链路与 runner 必须先对本文件的哈希成立，再做目录内闭合。同目录 manifest/index/check 互相一致不构成信任。任何本文件未固定的字节变化都必须被拒绝；本文件本身是 TS4-A 的冻结输入，不得在 TS4-A 期间改写。",
+  "pinned_root_policy": {
+    "artifact_index.json": "e3a26ddbb5dce6f6516558881f07bb248f4061a9f7bd6f5b8241884466cfe15e",
+    "run_manifest.json": "c418f74cf44f12e38ce0dd86099ca0386228f8d98ea00f3d5cfef37354b466a4"
+  },
+  "run_id": "ts3_outline_tocr2_closure_p2final_20260918T130000Z",
+  "trusted_file_sha256": {
+    "artifact_index.json": {
+      "sha256": "e3a26ddbb5dce6f6516558881f07bb248f4061a9f7bd6f5b8241884466cfe15e",
+      "size": 21968
+    },
+    "artifact_index_check.json": {
+      "sha256": "ce0b9a06d2eb26fa3d8d275e21ad4bb2c01d1a9215bea9286e898be58f453f2b",
+      "size": 361
+    },
+    "database_immutability.json": {
+      "sha256": "f38fbb79be575eaeb4e3d07fa9af12aeef005f7cf3f6e671d7c7d797aec028bd",
+      "size": 66
+    },
+    "evidence_conservation.json": {
+      "sha256": "b323c5ca047f92333b826784a220b8c9d889ab8314a8a3c1211275f00f1e861a",
+      "size": 1706
+    },
+    "manual_review.md": {
+      "sha256": "3f4829099a28186fe1d0b0eca29f9375e1a7683be1361ce48883de1f536039f5",
+      "size": 6109
+    },
+    "run_manifest.json": {
+      "sha256": "c418f74cf44f12e38ce0dd86099ca0386228f8d98ea00f3d5cfef37354b466a4",
+      "size": 18250
+    },
+    "ts2_alignment_equivalence.json": {
+      "sha256": "18303e46ca8d42d15a22bc2548ba662172b019127ff16598ffb6c7097d7b53ef",
+      "size": 9721
+    }
+  }
+}

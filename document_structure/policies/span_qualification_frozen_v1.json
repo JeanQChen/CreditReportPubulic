@@ -1,0 +1,108 @@
+{
+  "closing_quotes": [
+    "”",
+    "’",
+    "\"",
+    "'"
+  ],
+  "completion_enabled": true,
+  "factor_entries": [
+    {
+      "cause": "preceding_heading",
+      "factor": 1.0,
+      "schema_type": "BoundaryFactor",
+      "side": "left"
+    },
+    {
+      "cause": "resume_after_empty",
+      "factor": 0.9,
+      "schema_type": "BoundaryFactor",
+      "side": "left"
+    },
+    {
+      "cause": "resume_after_table_inside",
+      "factor": 0.85,
+      "schema_type": "BoundaryFactor",
+      "side": "left"
+    },
+    {
+      "cause": "resume_after_table_adjacency",
+      "factor": 0.75,
+      "schema_type": "BoundaryFactor",
+      "side": "left"
+    },
+    {
+      "cause": "resume_after_non_content",
+      "factor": 0.75,
+      "schema_type": "BoundaryFactor",
+      "side": "left"
+    },
+    {
+      "cause": "next_heading",
+      "factor": 1.0,
+      "schema_type": "BoundaryFactor",
+      "side": "right"
+    },
+    {
+      "cause": "document_end",
+      "factor": 0.9,
+      "schema_type": "BoundaryFactor",
+      "side": "right"
+    },
+    {
+      "cause": "empty",
+      "factor": 0.9,
+      "schema_type": "BoundaryFactor",
+      "side": "right"
+    },
+    {
+      "cause": "table_inside",
+      "factor": 0.85,
+      "schema_type": "BoundaryFactor",
+      "side": "right"
+    },
+    {
+      "cause": "table_adjacency",
+      "factor": 0.75,
+      "schema_type": "BoundaryFactor",
+      "side": "right"
+    },
+    {
+      "cause": "formal_unassigned",
+      "factor": 0.75,
+      "schema_type": "BoundaryFactor",
+      "side": "right"
+    },
+    {
+      "cause": "non_content",
+      "factor": 0.75,
+      "schema_type": "BoundaryFactor",
+      "side": "right"
+    }
+  ],
+  "max_snippet_chars": 120,
+  "max_snippets_per_node": 3,
+  "max_total_snippet_chars": 300,
+  "min_snippet_chars": 20,
+  "policy_fingerprint": "91039f649eaee551b966ac313780c0823911377b65d4828071d901808cb5819f",
+  "policy_id": "sqp-846927b144847dfe",
+  "policy_key": "span-qualification-frozen-v1",
+  "policy_locator": "loc-sqp-6b3e4e3f3e78661a",
+  "policy_version": "sqpr-1",
+  "schema_type": "SpanQualificationPolicy",
+  "schema_version": "sqp-1",
+  "sentence_terminators": [
+    "……",
+    "。",
+    "！",
+    "？",
+    ".",
+    "!",
+    "?",
+    ";",
+    "；"
+  ],
+  "set_complete_supported": true,
+  "span_confidence_min": 0.85,
+  "stage": "threshold_enabled"
+}

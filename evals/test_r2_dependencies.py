@@ -1,0 +1,297 @@
+"""Eval: R2 依赖束 build_r2_material_dependencies（R2_IMPLEMENTATION_PLAN §10/§11）。
+
+用法: python -m evals.test_r2_dependencies
+
+覆盖：
+- ``build_r2_material_dependencies(db_path)`` 返回 4-tuple
+  ``(resolver, source_policy_resolver, set_completeness_verifier, set_enumeration_verifier)``；
+  resolver == TopicMaterialPayloadResolver，set_enumeration_verifier == FormalSetEnumerationVerifier。
+- 复验 R1-B 硬门：注入 R2 依赖束（缺 source_policy_resolver / set_completeness_verifier）提交
+  set_complete Pack → fail-closed（TopicStoreValidationError），即使已注入正式枚举器也不得把
+  set_complete 升为 covered。
+- 不称完整正式 runtime：source_policy_resolver / set_completeness_verifier 均为 None（R3 职责），
+  R2 模块不导出 topic_runtime 组合入口。
+
+全部离线：临时 SQLite topic store + 合成 Pack，不调 LLM/网络。
+"""
+
+from __future__ import annotations
+
+import dataclasses
+import hashlib
+import json
+import sys
+import tempfile
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from harness import topic_schema as TS
+from harness import topic_store as Store
+from harness import r2_dependencies
+from harness.set_enumeration import FormalSetEnumerationVerifier
+
+
+def _sha(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def _sha_bytes(b: bytes) -> str:
+    return hashlib.sha256(b).hexdigest()
+
+
+# v6（§5.2.1 裁决 2）：current 依赖集为**精确 18 键**，只能经唯一公共 factory 构造。
+# 本文件的测试身份：contract_version="v1" / source_policy_version="v1"。
+# 变量名沿用历史（_V5_DV）；键数与 Pack schema 一律由常量/factory 决定，此处不复制字面量。
+_V5_DV = TS.build_current_dependency_versions(
+    contract_version="v1", source_policy_version="v1")
+
+
+# ---------------------------------------------------------------------------
+# 最小合成工厂（镜像 R1-B 测试，仅覆盖 set_complete 提交所需）
+# ---------------------------------------------------------------------------
+
+def _policy_ref() -> TS.SourcePolicyRef:
+    return TS.SourcePolicyRef(policy_id="sp1", policy_version="v1",
+                              content_fingerprint=_sha("policy"))
+
+
+def _source_policy() -> TS.FrozenSourcePolicySnapshot:
+    return TS.FrozenSourcePolicySnapshot(
+        policy_id="sp1", policy_version="v1", content_fingerprint=_sha("policy"),
+        key_industry_topics=("industry_position",))
+
+
+def _req_ref() -> TS.EvidenceRequirementRef:
+    return TS.EvidenceRequirementRef(requirement_id="er1", contract_sha256=_sha("contract"),
+                                     requirement_fingerprint=_sha("req:er1"), schema_version="1")
+
+
+def _aspect_snapshot(aspect_id: str, topic_id: str = "t1") -> TS.TopicAspectRequirementSnapshot:
+    return TS.TopicAspectRequirementSnapshot(
+        aspect_id=aspect_id, question_id="q1", topic_id=topic_id,
+        requirement_text="req text", kind="fact", producer_kind="company",
+        execution_path="direct", required_fields=("f1",),
+        coverage_rules=("required_fields_complete", "direct_support", "minimum_sources"),
+        complete_set_rule="", evidence_requirement_ids=(_req_ref(),),
+        source_policy_ref=_policy_ref(), time_scope="period", display_tier="primary",
+        content_role="subject", missing_policy="none", blocking_policy=(),
+        applicability_policy=None, impact_scope=("subject",), output_destination="body",
+        derived_from=(), business_review_status="none",
+        contract_version="v1", contract_sha256=_sha("contract"),
+        canonical_fingerprint=_sha("canonical:" + aspect_id),
+        dependency_fingerprint=_sha("dep"))
+
+
+def _evidence_locator() -> TS.EvidenceLocator:
+    return TS.EvidenceLocator(document_id="doc1", document_version="v1", section_path="s1", page=1)
+
+
+def _evidence_authority() -> TS.EvidenceAuthorityAssessment:
+    return TS.EvidenceAuthorityAssessment(
+        evidence_id="ev1", document_id="doc1", document_version="v1", company_id="300750",
+        is_current_document=True, is_current_set=True, page=1,
+        fetched_inspected_nonempty=True, content_hash=_sha("evidence:ev1"),
+        verdict="authoritative", reason="", validator_version="vv1")
+
+
+def _chain_ids(material: TS.ResearchMaterial, *, statement: str = "fact text",
+               aspect_ids: tuple[str, ...] = ("a1",)
+               ) -> tuple[TS.FactCandidate, TS.FactQualificationDecision]:
+    """派生 (candidate, eligible 决定)：身份口径与 runtime 的资格门逐字段同形。
+
+    M930-3 的资格链是**单向**的：`FactCandidate → FactQualificationDecision → 权威专属合格结果`。
+    本 helper 只用生产 factory 与公开 identity 口径重算，不手写 digest 形状。
+    """
+    candidate = TS.build_fact_candidate(
+        candidate_source_kind="topic_material", statement=statement, fact_type="fact",
+        aspect_ids=tuple(aspect_ids), question_ids=("q1",),
+        material_ids=(material.material_id,))
+    source_identity = TS.authority_source_identity(material.authority_assessment)
+    locator_digest = TS.sha256_canonical({"locators": [material.locator.to_dict()]})
+    payload_digest = TS.sha256_canonical({"payloads": [material.payload_ref.to_dict()]})
+    identity_digest = TS.sha256_canonical({
+        "candidate_id": candidate.candidate_id,
+        "candidate_revision": candidate.candidate_revision,
+        "material_ids": [material.material_id],
+        "material_content_hashes": [material.content_hash],
+        "source_identity": source_identity,
+        "locator_digest": locator_digest,
+        "payload_digest": payload_digest,
+    })
+    decision = TS.build_qualification_decision(
+        candidate, verdict="eligible", input_identity_digest=identity_digest,
+        input_source_identity=source_identity, input_locator_digest=locator_digest,
+        input_payload_digest=payload_digest)
+    return candidate, decision
+
+
+def _closed_fact(fid: str, aspect_ids: tuple[str, ...],
+                 material: TS.ResearchMaterial) -> TS.SupportedFact:
+    """经 M930-3 资格链（candidate → eligible 决定 → SupportedFact）产出的 fact。"""
+    cand, dec = _chain_ids(material, statement="fact text", aspect_ids=aspect_ids)
+    return TS.build_supported_fact(
+        fid, cand, dec, text="fact text", fact_type="fact",
+        citation_refs=(TS.CitationRef(ref_type="evidence", evidence_id="ev1"),),
+        source_authority=_evidence_authority())
+
+
+def _successors(material: TS.ResearchMaterial, fact: TS.SupportedFact, *,
+                aspect_ids: tuple[str, ...] = ("a1",)) -> dict:
+    """由 Pack 的 material + fact 确定性重算 successor 六族（六族一律显式传入）。"""
+    cand, dec = _chain_ids(material, statement=fact.text, aspect_ids=aspect_ids)
+    return {
+        "material_dispositions": (TS.build_material_disposition(
+            material, aspect_ids=tuple(aspect_ids), admission_state="admitted",
+            retention_state="retained", source_validation="validated",
+            reason_code="aspect_material_admitted", reason_proof="r2 fixture",
+            policy_version=TS.MATERIAL_DISPOSITION_VERSION),),
+        "fact_candidates": (cand,),
+        "fact_qualification_decisions": (dec,),
+        "external_facts": (), "contract_gaps": (), "research_blocks": (),
+    }
+
+
+def _usage() -> TS.TopicUsageSnapshot:
+    bp = TS.BudgetPolicySnapshot(schema_version="1", canonical_hash=_sha("bp"), tier="t1")
+    return TS.TopicUsageSnapshot(budget_policy=bp,
+                                 cumulative_usage=(TS.UsageEntry(metric="rounds", value=1, unit=""),),
+                                 stop_reason=None)
+
+
+def _set_complete(expected: tuple[str, ...] = ("sub1", "sub2")) -> TS.SetCompletenessAssessment:
+    dep_fp = TS.compute_dependency_fingerprint(_sha("contract"), "v1", _V5_DV)
+    boundary_proof = TS.EnumerationBoundaryProof(
+        aspect_id="a1", seed_evidence_ids=("f-a1",), document_id="doc1",
+        document_version="v1", evidence_set_version="set1", source_boundary_identity="s1",
+        component_material_ids=("m-a1",), trace_fingerprint=_sha("trace"),
+        direction_stop_reasons=(), unread_candidate_refs=(), unresolved_explicit_refs=(),
+        unclosed_continuations=(), tool_errors=(), budget_exhausted=False,
+        dependency_fingerprint=dep_fp)
+    return TS.SetCompletenessAssessment(
+        aspect_id="a1", rule_version=TS.SET_COMPLETENESS_RULE_VERSION,
+        source_material_ids=("m-a1",), document_version="v1", source_boundary="s1",
+        expected_member_ids=expected, observed_member_ids=expected,
+        excluded_member_ids=(), exclusion_reasons=(),
+        supporting_material_ids=("m-a1",), supporting_fact_ids=("f-a1",),
+        scope_complete=True, assessor_version=TS.SET_COMPLETENESS_ASSESSOR_VERSION,
+        contract_sha256=_sha("contract"), boundary_proof=boundary_proof,
+        dependency_fingerprint=dep_fp)
+
+
+def _build_set_complete_covered():
+    """构造 set_complete covered Pack + 冻结投影（合成 payload，不落库）。"""
+    payload_bytes = b'{"content":{"text":"synthetic"}}'
+    ev_auth_id = TS.authority_source_identity(_evidence_authority())
+    payload_ref = TS.MaterialPayloadRef(
+        object_type="evidence_span", authority_identity=ev_auth_id, version="v1",
+        content_hash=_sha_bytes(payload_bytes), locator=_evidence_locator(),
+        created_dependency_fingerprint=_sha("cdep"))
+    material = TS.ResearchMaterial(
+        material_id="m-a1", material_type="evidence_span", source_identity=ev_auth_id,
+        locator=_evidence_locator(), payload_ref=payload_ref,
+        content_hash=payload_ref.content_hash, authority_assessment=_evidence_authority())
+    fact = _closed_fact("f-a1", ("a1",), material)
+    snap = dataclasses.replace(_aspect_snapshot("a1", "t1"), coverage_rules=("set_complete",))
+    result = TS.AspectResearchResult(
+        aspect_id="a1", question_ids=("q1",), requirement_snapshot=snap, status="covered",
+        supported_fact_ids=("f-a1",), material_ids=("m-a1",), attempted_need_ids=(),
+        unresolved_ids=(), set_completeness=_set_complete())
+    process, coverage, derivation = TS.derive_pack_status(("a1",), (result,), stop_reason=None)
+    dep = TS.compute_dependency_fingerprint(_sha("contract"), "v1", _V5_DV)
+    pack = TS.TopicResearchPack(
+        schema_version=TS.TOPIC_PACK_SCHEMA_VERSION, pack_id="", run_id="run-1",
+        task_id="task1", company_id="300750", report_as_of=None, contract_version="v1",
+        contract_fingerprint=_sha("contract"), source_policy_version="v1", section_id="company",
+        topic_id="t1", question_ids=("q1",), aspect_results=(result,), materials=(material,),
+        facts=(fact,), outcome_refs=(), external_funnel=None, conflicts=(),
+        not_found_audits=(), unresolved=(), usage=_usage(), uncertain_calls=(),
+        process_status=process, coverage_status=coverage, status_derivation=derivation,
+        dependency_fingerprint=dep,
+        source_set=TS.DocumentSourceSet.single_document(
+            company_id="300750", document_id="doc-r2-deps-fixture",
+            document_version="dv-1", evidence_set_version="esv-1"),
+        **_successors(material, fact))
+    return TS.finalize_pack(pack), (snap,)
+
+
+def _requirement(aspects: tuple[TS.TopicAspectRequirementSnapshot, ...]) -> TS.TopicResearchRequirement:
+    return TS.TopicResearchRequirement(
+        task_id="task1", company_id="300750", report_as_of=None, contract_version="v1",
+        contract_fingerprint=_sha("contract"), source_policy_version="v1",
+        section_id="company", topic_id="t1", question_ids=("q1",),
+        aspects=aspects, allowed_capabilities=("evidence",), dependency_versions=_V5_DV)
+
+
+class _GoodSourcePolicyResolver:
+    """R1-B 独立冻结 SourcePolicy 解析（复验 set_complete 硬门用）。"""
+
+    def resolve(self, ref: TS.SourcePolicyRef) -> TS.FrozenSourcePolicySnapshot | None:
+        return _source_policy()
+
+
+def main() -> dict:
+    passed = 0
+    failed = 0
+    skipped = 0
+    details: list[str] = []
+
+    def check(cond, msg):
+        nonlocal passed, failed
+        if cond:
+            passed += 1
+            details.append(f"PASS: {msg}")
+        else:
+            failed += 1
+            details.append(f"FAIL: {msg}")
+
+    with tempfile.TemporaryDirectory() as td:
+        db = Path(td) / "h.db"
+        Store.init_topic_store(db)
+        bundle = r2_dependencies.build_r2_material_dependencies(db)
+        check(isinstance(bundle, tuple) and len(bundle) == 4,
+              "build_r2_material_dependencies 返回 4-tuple")
+        resolver, source_policy_resolver, set_completeness_verifier, set_enumeration_verifier = bundle
+        check(isinstance(resolver, Store.TopicMaterialPayloadResolver),
+              "resolver == TopicMaterialPayloadResolver")
+        check(isinstance(set_enumeration_verifier, FormalSetEnumerationVerifier),
+              "set_enumeration_verifier == FormalSetEnumerationVerifier")
+        check(source_policy_resolver is None, "source_policy_resolver == None（R3 职责，R2 不构建）")
+        check(set_completeness_verifier is None,
+              "set_completeness_verifier == None（R3 职责，R2 不构建）")
+        check(not hasattr(r2_dependencies, "build_topic_runtime")
+              and not hasattr(r2_dependencies, "build_trusted_runtime"),
+              "R2 模块不称完整 runtime（不导出 topic_runtime/trusted_runtime 组合入口）")
+
+        pack, aspects = _build_set_complete_covered()
+        req = _requirement(aspects)
+
+        # 复验 R1-B 硬门 1：注入 R2 依赖束（缺 source_policy_resolver）→ SourcePolicy gate fail-closed。
+        try:
+            Store.commit_pack(pack, req, resolver=resolver,
+                              source_policy_resolver=source_policy_resolver,
+                              set_completeness_verifier=set_completeness_verifier,
+                              set_enumeration_verifier=set_enumeration_verifier)
+            check(False, "R2 依赖束（缺 SourcePolicyResolver）提交 set_complete 应 fail-closed")
+        except Store.TopicStoreValidationError as e:
+            check("SourcePolicyResolver" in str(e),
+                  "R2 依赖束缺 SourcePolicyResolver → SourcePolicy gate fail-closed")
+
+        # 复验 R1-B 硬门 2：补 SourcePolicyResolver 但缺 SetCompletenessVerifier → set_complete gate fail-closed。
+        try:
+            Store.commit_pack(pack, req, resolver=resolver,
+                              source_policy_resolver=_GoodSourcePolicyResolver(),
+                              set_completeness_verifier=None,
+                              set_enumeration_verifier=set_enumeration_verifier)
+            check(False, "缺 SetCompletenessVerifier 提交 set_complete 应 fail-closed")
+        except Store.TopicStoreValidationError as e:
+            check("SetCompletenessVerifier" in str(e),
+                  "缺 SetCompletenessVerifier（即使注入正式枚举器）→ set_complete gate fail-closed")
+
+    return {"passed": passed, "failed": failed, "skipped": skipped, "details": details}
+
+
+if __name__ == "__main__":
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    print(json.dumps(main(), ensure_ascii=False, indent=2))

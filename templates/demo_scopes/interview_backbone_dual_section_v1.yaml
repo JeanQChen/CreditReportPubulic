@@ -1,0 +1,126 @@
+# M930-3 双节演示 DemoScope Profile（公司无关）。**只增不改**：`interview_backbone_v1.yaml`
+# 一字不动，历史 run 与四类冻结资产都不动，本文件是**新增的第二份声明源**。
+#
+# 与 v1 的唯一实质差异：`selected_sections` 去掉 `industry`，`selected_topics` 去掉
+# `industry_scale_cycle`（外部检索面本轮**后置**，不是跳过、不是失败）。
+# `company_identity` / `company_legal_risks` **保留在范围内**：本轮指令写明公司身份与
+# 法律风险能力「不删除」，只是**不作为本轮主营业务成稿的替代指标**。
+#
+# 本文件是**声明源**，不是第二个 wire 类型：加载后一切身份都落在
+# planning.demo_scope_schema.DemoScopeProfile 上，并由末尾的 profile_fingerprint 承诺。
+#
+# 范围推导规则（与 v1 同，不反过来从任何公司命中页/答案/既有结果反推）：
+#   1. selected_sections 的每个 section 必须存在；
+#   2. selected_topics 的每个 topic 必须存在，且其父 section 已被**显式**选中；范围
+#      粒度边界是 topic —— 每个被显式选中的 topic 的**全部 question/aspect** 进入
+#      范围（不是"选中 section 就纳入其全部 topic"）；
+#   3. 未被显式选中的 topic 一律不进入 Demo 范围；冻结 Contract 的其余部分构成
+#      out_of_scope，二者严格互补、不重叠、不遗漏。
+#
+# 生产规则、Contract、policy、测试与通用派生逻辑不得包含公司名、证券代码、固定页码、
+# 表号、Evidence ID、gold 或答案关键词特判；公司身份只允许存在于输入、运行 manifest、
+# evaluation fixture 与展示产物中。
+#
+# profile_fingerprint 由 `python -m planning.demo_scope --fingerprint` 打印后回填；
+# 加载入口 `load_demo_scope_profile()` 始终 fail-closed，不提供任何绕过开关。
+
+schema_version: demo-scope-profile-v1
+profile_id: interview_backbone_dual_section
+profile_version: v1
+status: frozen
+created_at: '2026-09-29'
+approved_at: '2026-09-29'
+frozen_at: '2026-09-29'
+
+# 四类冻结资产的版本与内容指纹；**逐字沿用 v1**（本批不改任何冻结资产）。
+# 任一缺失或漂移即 fail-closed。
+assets:
+  contract:
+    asset: templates/contracts/standard_v3.yaml
+    contract_version: v2
+    fingerprint: 5c45eabcad4989622aa3d483d9414304b3dbd0a5127db726f513409d14c6b410
+  source_policy:
+    asset: templates/policies/source_policy_v1.yaml
+    policy_id: source_policy_v1
+    policy_version: v1
+    fingerprint: 12921c67f82dd18876a8bbef4175a47e0b157e6b5921a3693350ad9aa48cbf17
+  writing_spec:
+    asset: templates/writing_specs/credit_report_v1.yaml
+    writing_spec_id: credit_report_v1
+    schema_version: writing-spec-v1
+    fingerprint: 82941438e1adbc7d0a1c685eab2f63b3b7b243ed70829627f6c2f8cdc8626354
+  presentation_profile:
+    asset: templates/presentation_profiles/interview_demo_v1.yaml
+    presentation_profile_id: interview_demo_v1
+    schema_version: presentation-profile-v1
+    fingerprint: ab43d221e97a9b75d9f3fd68f0364ea5f46ecfaf671e5c154588eeb9f2da6ca9
+
+selected_sections:
+  - section_id: company
+    selection_reason: 代表性公司章节：承载本地长叙述与树结构材料两个能力面（事件负面核验面一并保留在范围内）
+    design_surface_ids:
+      - ds.local_narrative
+      - ds.tree_material
+      - ds.claim_citation
+      - ds.gap_visibility
+  - section_id: financial
+    selection_reason: 代表性财务章节：承载结构化财务事实与财务附注两个能力面
+    design_surface_ids:
+      - ds.financial_authority
+      - ds.note_fact
+      - ds.gap_visibility
+
+selected_topics:
+  - topic_id: company_identity
+    section_id: company
+    selection_reason: 公司主体身份面：提供最小输入身份与 scope 分区展示（本轮不作主营业务成稿的替代指标）
+    design_surface_ids:
+      - ds.input_identity
+      - ds.scope_partition
+  - topic_id: company_business
+    section_id: company
+    selection_reason: 本地长叙述能力面：由多个合格 span 与事实形成一段可读正文
+    design_surface_ids:
+      - ds.local_narrative
+      - ds.tree_material
+      - ds.claim_citation
+      - ds.table_capability
+  - topic_id: company_legal_risks
+    section_id: company
+    selection_reason: 事件负面核验能力面：展示真实终态而非把未取得写成不存在（本轮不作主营业务成稿的替代指标）
+    design_surface_ids:
+      - ds.event_negative
+      - ds.claim_citation
+  - topic_id: fin_source_scope
+    section_id: financial
+    selection_reason: 财务权威面：报表可得性与审计意见的结构化事实与附注事实
+    design_surface_ids:
+      - ds.financial_authority
+      - ds.note_fact
+  - topic_id: fin_solvency
+    section_id: financial
+    selection_reason: 财务权威面：偿债能力结构化指标与缺口可见性
+    design_surface_ids:
+      - ds.financial_authority
+      - ds.gap_visibility
+
+# 允许使用的能力取自冻结 Contract 的 allowed_capabilities 词表，不新增动词。
+material_capabilities:
+  - search_evidence
+  - search_tables
+  - inspect_evidence
+  - compare_evidence
+  - verify_claim
+  - search_external_sources
+  - fetch_external_content
+  - lookup_financial_metric
+  - lookup_company_field
+
+fallback_policy_id: navigation_then_bounded_fallback_v1
+budget_policy_id: demo_backbone_budget_v1
+budget_policy_version: v1
+
+company_independent: true
+
+# 由 `python -m planning.demo_scope --fingerprint` 计算并回填。
+profile_fingerprint: c0b7cffe7bba43204933a0162840c3e57255d0ad630d80be380b220b6c741a54

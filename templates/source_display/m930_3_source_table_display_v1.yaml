@@ -1,0 +1,254 @@
+# M930-3 演示：**运行级来源展示记录**（数据，不是生产规则）
+#
+# `DESIGN_V2.md` §0.21 允许「本次选择的页和区域」作为运行级来源记录存在。生产代码里
+# （`sections/source_table_display.py`）没有任何公司名、证券代码或固定页码的判断分支；
+# 本文件是这一批数据本身的坐标清单。
+#
+# 每一条 region 给出：登记来源的 document_id + 声明版本、页号、PDF 点区域
+# （`(x0, top, x1, bottom)`，原点左上，与 pdfplumber 同口径）、表题、可确认期间与单位、
+# 以及两类**可复算锚点**：
+#   * `title_anchor` 必须出现在**该页**文字层里 —— 页号指错地方就当场报缺陷；
+#   * `row_anchors` 必须出现在**该区域**文字层里 —— 区域切到别的表或只切半张就当场报缺陷。
+#
+# 原文件哈希**不写在这里**：它由本次已登记的电子 PDF 来源清单在运行时给出并实测比对，
+# 避免同一件事有两个名字。
+#
+# 续表（跨页）用 `continuation_of` 指向**本文件中更早**的一条，展示顺序即这里的顺序。
+
+record_id: m930_3_source_table_display_v1
+
+regions:
+
+  # ---- 最新年报：营业收入构成（1）营业收入整体情况，跨第 24→25 页 ----
+  - region_key: income_latest_p1
+    rail: 营业收入构成
+    document_id: NDSD_2025_year
+    document_version: declared-latest-annual-report
+    page_number: 24
+    region_points: [48.0, 500.0, 552.0, 762.0]
+    title: "（1）营业收入构成 · 1）营业收入整体情况"
+    period_label: "2025年 / 2024年"
+    unit_label: 千元
+    title_anchor: 营业收入构成
+    row_anchors: [营业收入合计, 动力电池系统]
+    note: 本表在本页只到「电池材料及回收」行，其余行在第 25 页首，按续表展示。
+
+  - region_key: income_latest_p2
+    rail: 营业收入构成
+    document_id: NDSD_2025_year
+    document_version: declared-latest-annual-report
+    page_number: 25
+    region_points: [48.0, 66.0, 552.0, 160.0]
+    title: "（续表）营业收入构成 · 1）营业收入整体情况"
+    period_label: "2025年 / 2024年"
+    unit_label: 千元
+    title_anchor: 电池矿产资源
+    row_anchors: [其他业务, 境外]
+    continuation_of: income_latest_p1
+    note: 承接第 24 页的同一张表；缺了这一段就是「只截半张」。
+
+  # ---- 最新年报：营业收入及营业成本整体情况（含毛利率），第 25 页 ----
+  - region_key: margin_latest_p1
+    rail: 毛利及毛利率
+    document_id: NDSD_2025_year
+    document_version: declared-latest-annual-report
+    page_number: 25
+    region_points: [48.0, 376.0, 552.0, 652.0]
+    title: "（2）1）营业收入及营业成本整体情况"
+    period_label: "2025年 / 2024年"
+    unit_label: 千元
+    title_anchor: 营业收入及营业成本整体情况
+    row_anchors: [电气机械及器材, 动力电池系统, 境外]
+
+  # ---- 最新年报：营业成本构成，第 27 页 ----
+  - region_key: cost_latest_p1
+    rail: 营业成本构成
+    document_id: NDSD_2025_year
+    document_version: declared-latest-annual-report
+    page_number: 27
+    region_points: [48.0, 492.0, 552.0, 626.0]
+    title: "（5）营业成本构成"
+    period_label: "2025年 / 2024年"
+    unit_label: 千元
+    title_anchor: 营业成本构成
+    row_anchors: [电池行业, 直接材料]
+    note: 表下注「以上数据口径为主营业务」，已一并纳入区域。
+
+  # ---- 比较期年报：营业收入构成，第 19 页（本页内完整） ----
+  - region_key: income_prior_p1
+    rail: 营业收入构成
+    document_id: NDSD_2024_year
+    document_version: declared-prior-annual-report
+    page_number: 19
+    region_points: [48.0, 96.0, 552.0, 448.0]
+    title: "（1）营业收入构成 · 1）营业收入整体情况"
+    period_label: "2024年 / 2023年"
+    unit_label: 千元
+    title_anchor: 营业收入构成
+    row_anchors: [营业收入合计, 动力电池系统, 境外]
+
+  # ---- 比较期年报：营业收入及营业成本整体情况（含毛利率），跨第 19→20 页 ----
+  - region_key: margin_prior_p1
+    rail: 毛利及毛利率
+    document_id: NDSD_2024_year
+    document_version: declared-prior-annual-report
+    page_number: 19
+    region_points: [48.0, 660.0, 552.0, 756.0]
+    title: "（2）1）营业收入及营业成本整体情况"
+    period_label: "2024年 / 2023年"
+    unit_label: 千元
+    title_anchor: 营业收入及营业成本整体情况
+    row_anchors: [分业务]
+    note: 本表在本页只到「分业务」行，其余行在第 20 页首。
+
+  - region_key: margin_prior_p2
+    rail: 毛利及毛利率
+    document_id: NDSD_2024_year
+    document_version: declared-prior-annual-report
+    page_number: 20
+    region_points: [48.0, 66.0, 552.0, 258.0]
+    title: "（续表）营业收入及营业成本整体情况"
+    period_label: "2024年 / 2023年"
+    unit_label: 千元
+    title_anchor: 电气机械及器材
+    row_anchors: [电气机械及器材, 境外]
+    continuation_of: margin_prior_p1
+
+  # ---- 比较期年报：营业成本构成，第 22 页 ----
+  - region_key: cost_prior_p1
+    rail: 营业成本构成
+    document_id: NDSD_2024_year
+    document_version: declared-prior-annual-report
+    page_number: 22
+    region_points: [48.0, 124.0, 552.0, 246.0]
+    title: "（5）营业成本构成"
+    period_label: "2024年 / 2023年"
+    unit_label: 千元
+    title_anchor: 营业成本构成
+    row_anchors: [电池行业, 直接材料]
+    note: 本版表头口径写作「占主营业务成本比重」，与最新年报的「占营业成本比重」不同，原文照录。
+
+  # ---- 募集说明书：与上述三族同名的原表 ----
+  - region_key: kc_income_p1
+    rail: 募集说明书·主营业务收入构成
+    document_id: NDSD_KCZ_2026
+    document_version: declared-bond-prospectus
+    page_number: 50
+    region_points: [44.0, 125.0, 552.0, 405.0]
+    title: "表5-10 发行人主营业务收入构成表"
+    period_label: "2025年 / 2024年 / 2023年"
+    unit_label: "万元、%"
+    title_anchor: 表5-10
+    row_anchors: [动力电池系统, 合计]
+    note: 本表金额单位是**万元**，与年报表的千元不同，逐表如实标注。
+
+  - region_key: kc_cost_p1
+    rail: 募集说明书·主营业务成本构成
+    document_id: NDSD_KCZ_2026
+    document_version: declared-bond-prospectus
+    page_number: 50
+    region_points: [44.0, 596.0, 552.0, 766.0]
+    title: "表5-11 发行人主营业务成本构成表"
+    period_label: "2025年 / 2024年 / 2023年"
+    unit_label: "万元、%"
+    title_anchor: 表5-11
+    row_anchors: [动力电池系统, 其他业务成本]
+    note: 本表在页末未收尾，合计行在第 51 页首。
+
+  - region_key: kc_cost_p2
+    rail: 募集说明书·主营业务成本构成
+    document_id: NDSD_KCZ_2026
+    document_version: declared-bond-prospectus
+    page_number: 51
+    region_points: [44.0, 66.0, 552.0, 135.0]
+    title: "（续表）表5-11 发行人主营业务成本构成表"
+    period_label: "2025年 / 2024年 / 2023年"
+    unit_label: "万元、%"
+    title_anchor: "31,238,329.7"
+    row_anchors: [合计]
+    continuation_of: kc_cost_p1
+
+  - region_key: kc_margin_p1
+    rail: 募集说明书·主营业务毛利润及毛利率
+    document_id: NDSD_KCZ_2026
+    document_version: declared-bond-prospectus
+    page_number: 51
+    region_points: [44.0, 224.0, 556.0, 456.0]
+    title: "表5-12 发行人主营业务毛利润及毛利率构成表"
+    period_label: "2025年 / 2024年 / 2023年"
+    unit_label: "万元、%"
+    title_anchor: 表5-12
+    row_anchors: [动力电池系统, 合计]
+
+# 候选表区登记：这份材料里被**考察过**的表区，以及采用／不采用的理由。
+# 「不采用」也必须给理由——否则「没展示」会被读成「材料里没有」。
+registrations:
+  - document_id: NDSD_2025_year
+    area_label: 营业收入构成（1）营业收入整体情况，跨 p24→p25
+    decision: adopted
+    reason: 演示三族之一；本表在最新年报中跨页续接，按完整续表展示。
+    region_keys: [income_latest_p1, income_latest_p2]
+  - document_id: NDSD_2025_year
+    area_label: 营业收入及营业成本整体情况（含毛利率），p25
+    decision: adopted
+    reason: 演示三族之一（毛利及毛利率），单页完整。
+    region_keys: [margin_latest_p1]
+  - document_id: NDSD_2025_year
+    area_label: 营业成本构成，p27
+    decision: adopted
+    reason: 演示三族之一（营业成本），单页完整，含口径注释。
+    region_keys: [cost_latest_p1]
+  - document_id: NDSD_2025_year
+    area_label: 不同产品或业务的产销情况（销售量/生产量/库存量），p26→p27
+    decision: not_adopted
+    reason: >-
+      属产能与产销表，不在本次演示三族（收入构成／营业成本／毛利及毛利率）之内；
+      它的自动结构化重建归正式表能力轨，演示不借此充数。
+    region_keys: []
+  - document_id: NDSD_2024_year
+    area_label: 营业收入构成（1）营业收入整体情况，p19
+    decision: adopted
+    reason: 演示三族之一；比较期年报的同名表，本页内完整。
+    region_keys: [income_prior_p1]
+  - document_id: NDSD_2024_year
+    area_label: 营业收入及营业成本整体情况（含毛利率），跨 p19→p20
+    decision: adopted
+    reason: 演示三族之一；本表跨页续接，按完整续表展示。
+    region_keys: [margin_prior_p1, margin_prior_p2]
+  - document_id: NDSD_2024_year
+    area_label: 营业成本构成，p22
+    decision: adopted
+    reason: 演示三族之一；比较期年报的同名表，单页完整。
+    region_keys: [cost_prior_p1]
+  - document_id: NDSD_2024_year
+    area_label: 锂离子电池产业链各环节关键技术或性能指标，p20→p21
+    decision: not_adopted
+    reason: 技术参数表，与收入／成本／毛利三族无关；不为了让区域变多而展示。
+    region_keys: []
+  - document_id: NDSD_KCZ_2026
+    area_label: 表5-10 发行人主营业务收入构成表，p50
+    decision: adopted
+    reason: >-
+      与最新/比较期年报表同族（主营业务收入构成），且给出 2023–2025 三年同口径比较；
+      作为第三条来源与年报表并列展示。单位是万元，逐表如实标注。
+    region_keys: [kc_income_p1]
+  - document_id: NDSD_KCZ_2026
+    area_label: 表5-11 发行人主营业务成本构成表，跨 p50→p51
+    decision: adopted
+    reason: 与年报表同族（营业成本构成）；跨页续接，按完整续表展示。
+    region_keys: [kc_cost_p1, kc_cost_p2]
+  - document_id: NDSD_KCZ_2026
+    area_label: 表5-12 发行人主营业务毛利润及毛利率构成表，p51
+    decision: adopted
+    reason: 与年报表同族（毛利及毛利率），单页完整。
+    region_keys: [kc_margin_p1]
+  - document_id: NDSD_KCZ_2026
+    area_label: 表5-9 发行人人员结构表，p49
+    decision: not_adopted
+    reason: 员工结构表，与演示三族无关。
+    region_keys: []
+  - document_id: NDSD_KCZ_2026
+    area_label: 表5-13 近三年公司动力电池系统销量 / 表5-14 近三年公司电池系统产能情况表，p52
+    decision: not_adopted
+    reason: 销量与产能表，与演示三族无关；它们的结构化重建属正式表能力轨。
+    region_keys: []

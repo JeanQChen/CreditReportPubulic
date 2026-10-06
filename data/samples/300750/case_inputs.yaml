@@ -1,0 +1,77 @@
+# 本案例输入身份声明（公开副本专有文件）
+#
+# 为什么有这个文件：PDF 的 document_id / source_type / material_group，以及财务快照的
+# 工作簿顺序、statement_scope、currency、声明公司名，本来只存在于当时用来构建
+# data/evidence.db 与 data/financial_v2.db 的那次运行里。本文件把这些身份参数写成
+# 显式配置，使公开副本可以**从空环境**重建输入权威，而不必读取任何历史数据库。
+# 由 scripts/prepare_case_inputs.py 读取、逐份校验并按这份声明执行。
+#
+# 来源与归属（完整说明见 README「随附输入」一节）：
+#   - 三份 PDF：发行人公开披露文件的下载副本（两份年度报告 + 一份债券募集说明书）。
+#     逐份通读正文与文档属性，未在文件内发现版权或再分发限制声明。
+#     本副本**不**声称它们「官方原件」或「已获再分发许可」。
+#   - 三份 XLSX：按上述公开披露内容人工整理的工作簿（openpyxl 生成，单工作表、
+#     无公式、无外部链接），**不是**官方发布文件，也不来自巨潮资讯等披露平台的下载。
+#     其中期初/期末口径由整理者声明，见下 financial.scope / financial.currency。
+#     已做**元数据清理**（移除文档属性里的整理者个人显示名），故与清洗前文件不同字节，
+#     见下 financial.workbooks 注释。
+
+version: case-inputs-1
+
+subject: "300750"
+subject_name: "宁德时代"
+
+# --- 公司/行业材料：三份 PDF ---------------------------------------------------
+evidence:
+  db: data/evidence.db
+  material_group: company_industry
+  documents:
+    - document_id: NDSD_2024_year
+      filename: data/samples/300750/announcements/NDSD_2024_year.pdf
+      sha256: b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad
+      size_bytes: 2070073
+      source_type: annual_report
+    - document_id: NDSD_2025_year
+      filename: data/samples/300750/announcements/NDSD_2025_year.pdf
+      sha256: c15272977147dee7e6935a38ea0e4fd6855370aabb106f54cfe20f7cf6048ec9
+      size_bytes: 2043710
+      source_type: annual_report
+    - document_id: NDSD_KCZ_2026
+      filename: data/samples/300750/announcements/NDSD_KCZ_2026.pdf
+      sha256: 2b3a1fb3de97f23c9e6fc8c0d54adf0633265bb1b452a881d15bd3a0ba286dae
+      size_bytes: 1558483
+      source_type: debt_circular
+
+# --- 财务材料：三份工作簿 -------------------------------------------------------
+financial:
+  db: data/financial_v2.db
+  company: "300750"
+  scope: consolidated
+  currency: CNY
+  declared_name: "宁德时代"
+  detected_name: "宁德时代"
+  # 顺序即 scripts/run_financial_v2_chain.run() 的 excel_files 实参顺序，
+  # 因此 `scripts/run_financial_v2_chain.py:98-140` 生成的 external_document_id
+  # （doc-<company>-<i>-<source_name>）才与既有快照的来源身份一致。
+  #
+  # 三份工作簿是**元数据清理副本**：只从 docProps/core.xml 移除了整理者的个人显示名，
+  # 工作表、单元格原值与公式、定义名称、单位与格式与清洗前逐项相同（成员级对账见交付报告）。
+  # 因此它们**不再**与清洗前文件逐字节相同，快照身份随文件哈希改变
+  # （snap-490c67acbc3ad4b770087eb817b2c9e3 → snap-5c912da539bc643fe3fad7e54735553e）。
+  # 该顺序、该 scope/currency 下重建出的 metrics/读数条数不变：112 项指标 / 432 条读数。
+  workbooks:
+    - filename: data/samples/300750/financial/NDSD_BALANCESHEET_2023-2026Q1.xlsx
+      sha256: 906034ec0b40b89be74d7102849e6bfc817d2a922980113eab8dd3aedf0a0590
+      size_bytes: 12898
+    - filename: data/samples/300750/financial/NDSD_EFFORT_2023-2026Q1.xlsx
+      sha256: f5e43889262f2aee8d451e87938e9c320e3f10f1c1104881d319b85b41302ec4
+      size_bytes: 10990
+    - filename: data/samples/300750/financial/NDSD_CASH_2023-2026Q1.xlsx
+      sha256: a2e7096303faa7f5625c5ad76fb20e6af8a113a0be17cc3d27564f5ef887fb58
+      size_bytes: 11590
+
+# --- 期望产出（供核对，不参与构建）---------------------------------------------
+expected:
+  evidence_set_version: set-501395a7ad5a
+  financial_snapshot_id: snap-5c912da539bc643fe3fad7e54735553e
+  financial_as_of_date: "2026-03-31"

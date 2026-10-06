@@ -1,0 +1,59 @@
+{
+  "company_id": "555555",
+  "document_id": "FIXTURE_BOND_2026",
+  "document_version": "sha256-d2404f674f81e788",
+  "evidence_block_count": 9,
+  "evidence_relpath": "evidence_set.json",
+  "evidence_set_version": "fsv-non300750-bond-1",
+  "factor_table_fingerprint": "ff3a3636948ed65de3944c7bda2eb2000e4e455fe709022c8cd3f73c4ae9dd58",
+  "fixture_dir_relpath": "evals/fixtures/tree_structure/non_300750_ts4",
+  "fixture_kind": "ts4_non_300750_positive_v1",
+  "fixture_stage": "TS4-A",
+  "member_identity_sha256": "53329846f618fda0c5bb5d7725ce020d3952603013d42283bba83b5baa5bba10",
+  "members": [
+    {
+      "relpath": "page_layout.json",
+      "role": "page_layout",
+      "sha256": "81873ca534b3a0f6575a9d33e1b71004fa872bbaaf1f97e63a1ca6e2f84b6dc9",
+      "size": 83335
+    },
+    {
+      "relpath": "document_outline.json",
+      "role": "document_outline",
+      "sha256": "a864bbb52c8aaf11cfd8878181577ed507d30254fa72c5de6082d6c57f0e1bbc",
+      "size": 20731
+    },
+    {
+      "relpath": "evidence_set.json",
+      "role": "evidence_set",
+      "sha256": "10de3ffa9610b726953857d6cff2bf861b73700be0ec304ef639d3d70b766eb1",
+      "size": 8064
+    }
+  ],
+  "outline_id": "do-b67e569c7cf328b6",
+  "page_count": 9,
+  "page_layout_id": "pl-4da686515658259e",
+  "qualification_policy": {
+    "approval_fingerprint": null,
+    "policy_key": "span_qualification_distribution",
+    "policy_version": "sqpr-1",
+    "stage": "distribution_only",
+    "threshold": null
+  },
+  "source_pdf": {
+    "relpath": "evaluation/results/tree_structure_ts3_outline_ts3_outline_tocr2_closure_p2final_20260918T130000Z/fixture_non_300750_bond.pdf",
+    "sha256": "d2404f674f81e78873cc62dc7cb1eff76a5d02230b97d95ad6028a8233381fb8",
+    "size": 21301
+  },
+  "source_pdf_sha256": "d2404f674f81e78873cc62dc7cb1eff76a5d02230b97d95ad6028a8233381fb8",
+  "ts4_a_binding": {
+    "binding_state": "pending_ts4_a_run",
+    "bound_run_id": null,
+    "confidence_distribution_sha256": null,
+    "machine_index_sha256": null,
+    "note": "TS4-A 首次运行后由 runner 就地填入真实身份并把 binding_state 置为 bound；review_attestation_sha256 在 TS4-A 阶段恒为 null（封存属人工门）。",
+    "review_attestation_sha256": null,
+    "span_snapshot_aggregate_sha256": null,
+    "trust_root_file_sha256": null
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "default_policy_key": "span-qualification-distribution-v1",
+  "policies": {
+    "span-qualification-distribution-v1": {
+      "file": "span_qualification_distribution_v1.json",
+      "policy_fingerprint": "0323c504dadbd1d806f594d221ca475f467cffb5c7387532b6c9402e2f8d7119"
+    },
+    "span-qualification-frozen-v1": {
+      "file": "span_qualification_frozen_v1.json",
+      "policy_fingerprint": "91039f649eaee551b966ac313780c0823911377b65d4828071d901808cb5819f"
+    }
+  },
+  "registry_version": "sqpr-1",
+  "schema_type": "SpanQualificationRegistry"
+}

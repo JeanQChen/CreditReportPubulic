@@ -1,0 +1,131 @@
+{
+  "block_count": 9,
+  "company_id": "555555",
+  "document_id": "FIXTURE_BOND_2026",
+  "document_version": "sha256-d2404f674f81e788",
+  "evidence_set_version": "fsv-non300750-bond-1",
+  "evidence_types": [
+    "paragraph"
+  ],
+  "fixture_evidence_version": "fev-1",
+  "members": [
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "e26d87bbd6998c44c94921db54854572ef5be27ba08dfdee1e6a88509a816947",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "ebd60aef476e7c8ec9396b3348f2d3d2",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 1,
+      "structured_payload": null,
+      "text": "示例发行人 2026 年公司债券年度报告\n本期债券募集资金已按约定用途使用，未发生变更。C1\n报告期内发行人主营业务稳定，不存在重大不利变化。C1\n本期债券付息兑付正常，未发生违约或延迟支付情形。C1"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "c0a766a58b800f298add9d31d58a45b95d61ea538b5cf7c280f12b9256154f27",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "36c7f1766bbc76b75f2ae15fa5a1e44b",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 2,
+      "structured_payload": null,
+      "text": "目录\n第一节 经营情况 .......... 2\n第二节 财务信息 .......... 4\n第九节 不存在的章节 .......... 3\n本期债券募集资金已按约定用途使用，未发生变更。T\n报告期内发行人主营业务稳定，不存在重大不利变化。T\n本期债券付息兑付正常，未发生违约或延迟支付情形。T"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "72f467db89e6d0b5ef83ba27b924ce1654028d9167bda0957c6ce48e77db90ff",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "a7d403bfdd136d14dcababb6b1555e4d",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 3,
+      "structured_payload": null,
+      "text": "第一节 经营情况\n一、主营业务\n（一）业务构成\n1、主要产品\n（1）产品甲\n本期债券募集资金已按约定用途使用，未发生变更。A\n报告期内发行人主营业务稳定，不存在重大不利变化。A\n本期债券付息兑付正常，未发生违约或延迟支付情形。A\n（2）产品乙\n2、主要客户\n本期债券募集资金已按约定用途使用，未发生变更。A2\n报告期内发行人主营业务稳定，不存在重大不利变化。A2\n本期债券付息兑付正常，未发生违约或延迟支付情形。A2"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "19af9e1ac658c384d6ba2a23a3391e0d230b51ed13502a8a016a89f50c76105f",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "2e064b569f91b1e454442f9c2e817c86",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 4,
+      "structured_payload": null,
+      "text": "本期债券募集资金已按约定用途使用，未发生变更。B\n报告期内发行人主营业务稳定，不存在重大不利变化。B\n本期债券付息兑付正常，未发生违约或延迟支付情形。B\n2025年\n1,234.56\n项目甲\n1,234.56\n12.34%\n项目乙\n2,345.67\n23.45%\n项目丙\n3,456.78\n34.56%\n本期债券付息兑付正常，未发生违约情形。"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "8be27804170f90e815b6be988f1df55b43ad0e788d8cff18971f681712c21c67",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "44a2231b698e11b86d6793b75999f053",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 5,
+      "structured_payload": null,
+      "text": "第二节 财务信息\n一、主要会计数据\n（一）资产负债情况\n本期债券募集资金已按约定用途使用，未发生变更。C\n报告期内发行人主营业务稳定，不存在重大不利变化。C\n本期债券付息兑付正常，未发生违约或延迟支付情形。C"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "18a9a1d60e046552d5d72a68ca85c38fa92cf97673aa744d111a011df5303a81",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "f216c5a2db1df794c53a5cfc92a52934",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 6,
+      "structured_payload": null,
+      "text": "第三节 其他事项\n一、主要业务\n（一）业务构成\n本期债券募集资金已按约定用途使用，未发生变更。D\n报告期内发行人主营业务稳定，不存在重大不利变化。D\n本期债券付息兑付正常，未发生违约或延迟支付情形。D"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "f39a9ea67c18d5d78f64f6d88412474a15364e50098188ee62c91e6789f0d1e7",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "69154a7ae753c7fd3c633b765ccc1421",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 7,
+      "structured_payload": null,
+      "text": "本期债券募集资金已按约定用途使用，未发生变更。E\n报告期内发行人主营业务稳定，不存在重大不利变化。E\n本期债券付息兑付正常，未发生违约或延迟支付情形。E\n（一）成本分析\n本期债券募集资金已按约定用途使用，未发生变更。E2\n报告期内发行人主营业务稳定，不存在重大不利变化。E2\n本期债券付息兑付正常，未发生违约或延迟支付情形。E2"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "6d693f47f791fb654d353d84cabe28994f82ac44ecde65e502fd30b081bccfb2",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "998b5e390fa951eeebb33e58a71db043",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 8,
+      "structured_payload": null,
+      "text": "本期债券募集资金已按约定用途使用，未发生变更。F\n报告期内发行人主营业务稳定，不存在重大不利变化。F\n本期债券付息兑付正常，未发生违约或延迟支付情形。F\n相关明细详见第三节。\n本期债券募集资金已按约定用途使用，未发生变更。F2\n报告期内发行人主营业务稳定，不存在重大不利变化。F2\n本期债券付息兑付正常，未发生违约或延迟支付情形。F2"
+    },
+    {
+      "block_index": 0,
+      "company_id": "555555",
+      "content_hash": "56c2bcc5c806635e89f30fd10564998c9e171ac6d71d5bb011d671c219750561",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_version": "sha256-d2404f674f81e788",
+      "evidence_id": "eea81242852796e2fb65f9c265d73e86",
+      "evidence_set_version": "fsv-non300750-bond-1",
+      "evidence_type": "paragraph",
+      "page_number": 9,
+      "structured_payload": null,
+      "text": "本期债券募集资金已按约定用途使用，未发生变更。G\n报告期内发行人主营业务稳定，不存在重大不利变化。G\n本期债券付息兑付正常，未发生违约或延迟支付情形。G"
+    }
+  ],
+  "schema_type": "TS4FixtureEvidenceSet"
+}

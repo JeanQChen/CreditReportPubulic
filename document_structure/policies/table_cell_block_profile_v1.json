@@ -1,0 +1,126 @@
+{
+  "cell_block_profile_fingerprint": "60c59b33b54bdb753b511c82876ebbd2245620f8ff7837ad58b5822d668b4a6f",
+  "cell_block_profile_id": "tcbp-d28afade8881a2c9",
+  "cell_block_profile_locator": "loc-tcbp-a03e635e1b43543a",
+  "conflict_rule": "fail_closed_unclassified",
+  "font_signals": {
+    "body_size_reference": "cell_block_median_line_height",
+    "heading_min_size_ratio": 1.05,
+    "schema_type": "FontSignals",
+    "size_tolerance": 0.01
+  },
+  "line_group_rule": {
+    "kind": "consecutive_page_line_runs",
+    "max_intra_group_line_gap": 1,
+    "schema_type": "LineGroupRule"
+  },
+  "normalization_version": "tcbn-1",
+  "profile_key": "table-cell-block-v1",
+  "profile_version": "tcbp-1",
+  "rules": [
+    {
+      "order": 1,
+      "requires_all": [
+        "own_line_group",
+        "followed_by_other_block_in_same_cell",
+        "no_sentence_terminator"
+      ],
+      "requires_any": [
+        "size_ratio_at_least_heading_min",
+        "bold_span_majority",
+        "numbering_marker_prefix"
+      ],
+      "role": "heading",
+      "rule_key": "heading",
+      "schema_type": "CellBlockRule"
+    },
+    {
+      "order": 2,
+      "requires_all": [
+        "starts_with_list_marker"
+      ],
+      "requires_any": [],
+      "role": "list_item",
+      "rule_key": "list_item",
+      "schema_type": "CellBlockRule"
+    },
+    {
+      "order": 3,
+      "requires_all": [
+        "line_group_count_at_least_2"
+      ],
+      "requires_any": [
+        "has_sentence_terminator",
+        "wrap_continuation"
+      ],
+      "role": "paragraph",
+      "rule_key": "paragraph",
+      "schema_type": "CellBlockRule"
+    },
+    {
+      "order": 4,
+      "requires_all": [
+        "single_line_group"
+      ],
+      "requires_any": [],
+      "role": "line",
+      "rule_key": "line",
+      "schema_type": "CellBlockRule"
+    },
+    {
+      "order": 5,
+      "requires_all": [],
+      "requires_any": [],
+      "role": "unclassified",
+      "rule_key": "unclassified",
+      "schema_type": "CellBlockRule"
+    }
+  ],
+  "schema_type": "TableCellBlockProfile",
+  "schema_version": "tcbp-1",
+  "signals": {
+    "bold_span_majority_ratio": 0.6,
+    "list_markers": [
+      "-",
+      "–",
+      "—",
+      "•",
+      "·",
+      "▪",
+      "●",
+      "○",
+      "◆",
+      "◇",
+      "★",
+      "①",
+      "②",
+      "③",
+      "④",
+      "⑤",
+      "(1)",
+      "（1）",
+      "(2)",
+      "（2）",
+      "1.",
+      "2.",
+      "3.",
+      "4.",
+      "1、",
+      "2、",
+      "3、",
+      "4、"
+    ],
+    "sentence_terminators": [
+      "。",
+      "；",
+      "！",
+      "？",
+      ".",
+      ";",
+      "!",
+      "?"
+    ],
+    "wrap_continuation_min_fill_ratio": 0.6
+  },
+  "unknown_signal_rule": "unclassified"
+}

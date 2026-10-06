@@ -1,0 +1,361 @@
+"""Phase 3 Batch B 预算 / 补检 / 去重 / 停止规则（纯函数，无 I/O）。
+
+职责边界（编码前计划 §7/§20）：
+- 预算默认值集中在此（ResearchBudget + DEFAULT_BUDGET），读入并写入 trace，不散落硬编码；
+- 补检必须改变 query/route/filter/time scope 等 ≥1 项，相同调用靠 dedup_key 去重；
+- Harness 只消费 Retriever V2 返回的 EvidencePack 与既有降级状态，不改变 Phase 2 的
+  sparse/dense/fusion 策略、权重、Top-K 或超时降级逻辑；
+- max_tokens 指单题 input+output 已知 usage 总预算；Provider 不返回 usage 时不能假装
+  未超预算，须同时依赖回合 / 调用次数 / 耗时停止。
+
+CLI: python -m harness.policies --self-check
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from dataclasses import dataclass
+
+from harness import schema as H
+from tools import contracts as TC
+
+# ---------------------------------------------------------------------------
+# 预算
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class ResearchBudget:
+    """单题研究预算（本批次只统计当前题；batch 级累计由 Batch C 接管）。"""
+
+    max_rounds: int
+    max_tool_calls: int
+    max_local_searches: int
+    max_external_searches: int
+    max_fetches: int
+    max_action_repairs: int
+    max_added_needs: int
+    max_consecutive_no_new_evidence: int
+    max_tokens: int                 # 单题 input+output 已知 usage 总预算
+    max_elapsed_ms: int
+    max_retries_per_call: int
+
+    def as_dict(self) -> dict:
+        return {
+            "max_rounds": self.max_rounds,
+            "max_tool_calls": self.max_tool_calls,
+            "max_local_searches": self.max_local_searches,
+            "max_external_searches": self.max_external_searches,
+            "max_fetches": self.max_fetches,
+            "max_action_repairs": self.max_action_repairs,
+            "max_added_needs": self.max_added_needs,
+            "max_consecutive_no_new_evidence": self.max_consecutive_no_new_evidence,
+            "max_tokens": self.max_tokens,
+            "max_elapsed_ms": self.max_elapsed_ms,
+            "max_retries_per_call": self.max_retries_per_call,
+        }
+
+
+# 默认预算（用户 §三修订：5 回合 / 5 工具调用 / 2 本地 / 2 外部搜索 / 2 fetch /
+# 1 动作格式修复）。max_rounds 由 3 提到 5：完整链路「search → inspect A → inspect B →
+# ANSWER」需要 ≥4 个动作回合，3 回合在补检/双证据核对前就耗尽；ANSWER 是终态动作，
+# 不占用工具调用预算（tool_calls 只在 registry.execute 后累计），故 5 回合足以走完
+# 检索+两证据 inspect+作答，并保留 1 回合补检余量。
+DEFAULT_BUDGET = ResearchBudget(
+    max_rounds=5,
+    max_tool_calls=5,
+    max_local_searches=2,
+    max_external_searches=2,
+    max_fetches=2,
+    max_action_repairs=1,
+    max_added_needs=2,
+    max_consecutive_no_new_evidence=2,
+    max_tokens=8000,
+    max_elapsed_ms=120000,
+    max_retries_per_call=1,
+)
+
+
+# ---------------------------------------------------------------------------
+# 补检触发条件（§三 8 条件）
+# ---------------------------------------------------------------------------
+
+SUPPLEMENT_TRIGGERS = (
+    "LOCAL_SEARCH_EMPTY",
+    "LOCAL_PARTIAL_COVERAGE",
+    "MISSING_REQUIRED_TOPIC",
+    "FINANCIAL_UNAVAILABLE",
+    "EXTERNAL_SNIPPET_WITHOUT_SNAPSHOT",
+    "INSUFFICIENT_SOURCE_FOR_CONCLUSION",
+    "EVIDENCE_CONFLICT",
+    "EXPLICIT_UNRESOLVED",
+)
+
+
+def supplement_triggers(state: H.ResearchState) -> list[str]:
+    """从可观测状态推导当前命中的补检触发条件（诊断用，供 runtime 决定补检/停止）。"""
+    triggers: list[str] = []
+    seen_search = False
+    seen_external_search = False
+
+    for rec in state.tool_history:
+        tool = rec.result.tool_name
+        status = rec.result.status
+        data = rec.result.data or {}
+
+        if tool in ("search_evidence", "search_tables"):
+            seen_search = True
+            if status == "EMPTY":
+                triggers.append("LOCAL_SEARCH_EMPTY")
+            elif status == "PARTIAL":
+                triggers.append("LOCAL_PARTIAL_COVERAGE")
+            if data.get("missing_requirements"):
+                triggers.append("MISSING_REQUIRED_TOPIC")
+
+        if tool in ("lookup_company_field", "lookup_financial_metric"):
+            if status == "EMPTY" and rec.result.error_code == "DB_FIELD_UNAVAILABLE":
+                triggers.append("FINANCIAL_UNAVAILABLE")
+
+        if tool == "compare_evidence":
+            for pair in data.get("pairs", []):
+                if pair.get("value_relation") == "conflict":
+                    triggers.append("EVIDENCE_CONFLICT")
+                    break
+
+        if tool == "search_external_sources":
+            seen_external_search = True
+
+    # 外部搜索已执行但尚无快照 → 只有摘要，不能作关键事实。
+    if seen_external_search and not state.external_snapshot_ids:
+        triggers.append("EXTERNAL_SNIPPET_WITHOUT_SNAPSHOT")
+
+    if state.unresolved_items:
+        triggers.append("EXPLICIT_UNRESOLVED")
+
+    # 尚无任何可引用材料 + 无答案 → 来源不足以支撑结论。
+    if (not state.evidence_ids and not state.structured_refs
+            and not state.external_snapshot_ids and not state.answered_claims):
+        if seen_search or seen_external_search:
+            triggers.append("INSUFFICIENT_SOURCE_FOR_CONCLUSION")
+
+    # 去重保序。
+    return list(dict.fromkeys(triggers))
+
+
+def has_gap(state: H.ResearchState) -> bool:
+    """是否存在需要补检或记为缺口的条件。"""
+    return bool(supplement_triggers(state))
+
+
+# ---------------------------------------------------------------------------
+# 去重
+# ---------------------------------------------------------------------------
+
+def dedup_key(call: TC.ToolCall) -> str:
+    """规范化参数哈希（幂等键）：同 tool + 同参数 → 同 key，防止重复调用。"""
+    payload = {
+        "tool": call.tool_name,
+        "args": sorted(call.arguments.items()),
+    }
+    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+# ---------------------------------------------------------------------------
+# 外部搜索 → fetch → snapshot 状态规则（F4）
+# ---------------------------------------------------------------------------
+
+def searched_candidate_urls(state: H.ResearchState) -> list[str]:
+    """SEARCH_EXTERNAL 已返回的候选 URL（保序去重）。
+
+    只读 tool_history 中 search_external_sources 的 results[].url；搜索摘要只导航、
+    不作关键事实引用（正文必须 fetch 后 snapshot 才可引用）。
+    """
+    urls: list[str] = []
+    for rec in state.tool_history:
+        if rec.result.tool_name != "search_external_sources":
+            continue
+        for r in (rec.result.data or {}).get("results", []):
+            url = r.get("url") if isinstance(r, dict) else None
+            if url and url not in urls:
+                urls.append(url)
+    return urls
+
+
+def fetched_urls(state: H.ResearchState) -> set[str]:
+    """已发起过 FETCH_EXTERNAL 的 URL（含失败尝试）。
+
+    失败尝试也算「已消耗候选」：fetch 失败后该 URL 不再永久阻断重搜索（避免死锁）。
+    """
+    urls: set[str] = set()
+    for rec in state.tool_history:
+        if rec.result.tool_name != "fetch_external_content":
+            continue
+        url = (rec.call.arguments or {}).get("url")
+        if url:
+            urls.add(url)
+    return urls
+
+
+def unfetched_candidate_urls(state: H.ResearchState) -> list[str]:
+    """SEARCH_EXTERNAL 已返回、但尚未发起过 FETCH_EXTERNAL 的候选 URL。"""
+    fetched = fetched_urls(state)
+    return [u for u in searched_candidate_urls(state) if u not in fetched]
+
+
+#: 外部动作（`ACTION_ROUTES` 里路由到 `EXTERNAL_RESEARCH` 的那三个）。授权门对三者一律生效：
+#: 只堵 `SEARCH_EXTERNAL` 不够——URL 可以来自更早的轮次或被注入的候选，`FETCH_EXTERNAL` /
+#: `SNAPSHOT_EXTERNAL` 一样会真的触网。
+EXTERNAL_ACTIONS = ("SEARCH_EXTERNAL", "FETCH_EXTERNAL", "SNAPSHOT_EXTERNAL")
+
+#: 未授权而拒绝外部动作时记在 `rejected_duplicate_actions[].source` 上的封闭值。
+EXTERNAL_NOT_AUTHORIZED_SOURCE = "external_research_not_authorized"
+
+#: 拒绝原因码（与 `source` 区分：`source` 是拦截点，`reason` 是可判读的结论）。
+EXTERNAL_NOT_AUTHORIZED_REASON = "EXTERNAL_RESEARCH_NOT_AUTHORIZED"
+
+
+def external_research_unauthorized(action: str, context: object | None) -> str | None:
+    """本轮未授权外部检索时，**执行前**拒绝外部动作（fail-closed）。
+
+    `RouteContext.external_research_enabled` 的语义是"本轮是否启用外部检索漏斗"。在接线
+    生产构造器之前，这条开关只是一行 prompt 文案加一个报告位——即使 need 真的带出了
+    `external` 要求，外部工具也照旧会被执行（真联网）。本函数把它变成**真门**：
+
+    * 动作不是外部动作 → 不阻断（本地检索不受影响）；
+    * `context is None` → 阻断。**没有上下文就没有授权声明**，不能把"不知道"读成"允许"
+      （与 `harness/runtime.py` 的 fail-closed 口径一致）；
+    * `context.external_research_enabled` 非真 → 阻断（含缺字段 / 非 bool 的畸形上下文）。
+
+    返回原因码或 None。本函数**不**发请求、不判来源质量、不决定路由。
+    """
+    if action not in EXTERNAL_ACTIONS:
+        return None
+    if context is None:
+        return EXTERNAL_NOT_AUTHORIZED_REASON
+    if getattr(context, "external_research_enabled", None) is not True:
+        return EXTERNAL_NOT_AUTHORIZED_REASON
+    return None
+
+
+def external_search_blocked(state: H.ResearchState) -> str | None:
+    """F4 状态规则：已有未 fetch 候选 URL 时，禁止再次 SEARCH_EXTERNAL。
+
+    返回阻断原因或 None。规则（fail-closed）：
+    - 无未 fetch 候选 → 不阻断（首个 search 或候选已耗尽）；
+    - 有未 fetch 候选 → 阻断，应优先 FETCH_EXTERNAL 消耗候选，而非重复/近义搜索。
+    「换 aspect 新查询」不在确定性可判范围：须先 fetch 消耗候选，之后才允许再 search。
+    """
+    if unfetched_candidate_urls(state):
+        return "EXTERNAL_SEARCH_HAS_UNFETCHED_CANDIDATES"
+    return None
+
+
+# ---------------------------------------------------------------------------
+# 预算检查
+# ---------------------------------------------------------------------------
+
+def check_budget(state: H.ResearchState, budget: ResearchBudget) -> str | None:
+    """任一预算超限则返回具体 stop_reason；未超限返回 None。
+
+    max_tokens 仅对「已知 usage」生效；存在 usage 未知调用时跳过 token 检查，
+    转而依赖回合 / 调用次数 / 耗时（编码前同步补正）。
+    """
+    u = state.usage
+    if u.rounds > budget.max_rounds:
+        return "BUDGET_ITERATIONS"
+    if u.tool_calls >= budget.max_tool_calls:
+        return "BUDGET_TOOL_CALLS"
+    if u.local_searches > budget.max_local_searches:
+        return "BUDGET_TOOL_CALLS"
+    if u.external_searches > budget.max_external_searches or u.fetches > budget.max_fetches:
+        return "BUDGET_EXTERNAL"
+    if u.usage_unknown_calls == 0 and (u.input_tokens + u.output_tokens) > budget.max_tokens:
+        return "BUDGET_TOKENS"
+    if u.elapsed_ms > budget.max_elapsed_ms:
+        return "BUDGET_ELAPSED"
+    if u.consecutive_no_new_evidence > budget.max_consecutive_no_new_evidence:
+        return "CONSECUTIVE_NO_NEW_EVIDENCE"
+    return None
+
+
+# 强制收敛停止原因：工具/回合/外部预算耗尽，或停滞（连续无新证据）后，若已有可引用材料，
+# 仍给（且只给）一次最终收敛机会（ANSWER/STOP_WITH_GAP/REQUEST_HUMAN），不立即终止研究循环。
+# 连续无新证据此前属「耗尽即停」停滞类：审计证实 inspect「摘要→全文」升级曾被误判为无进展，
+# 导致「主营业务未确认」实为流程提前终止而非材料缺失。现修正进度语义（runtime._apply_tool_result
+# 已把首次全文捕获/内容升级计入进展），并把停滞也纳入最终收敛：已有可引用材料却连续无进展时，
+# 仍给一次带引用答案机会，避免有材料却被 CONSECUTIVE_NO_NEW_EVIDENCE 直接腰斩。
+# tokens/elapsed 仍属资源类，不在此列（耗尽即停，不强制收敛）。
+FORCE_CONVERGE_REASONS = (
+    "BUDGET_TOOL_CALLS", "BUDGET_ITERATIONS", "BUDGET_EXTERNAL",
+    "CONSECUTIVE_NO_NEW_EVIDENCE",
+)
+
+
+def can_afford_tool_call(state: H.ResearchState, budget: ResearchBudget, *,
+                         tool_name: str) -> str | None:
+    """工具执行前的硬上限检查（action/tool-aware，执行前拒绝，不做超预算再停）。
+
+    - max_tool_calls 硬上限：fetch 成功后 Rules 会自动 SNAPSHOT_EXTERNAL（+1 次工具调用），
+      故 fetch 前按 +2 预留，避免「fetch 成功却无法持久化引用」的半链路。
+    - 分项预算硬上限（执行前拒绝，绝不先达 max+1 再由下一轮 check_budget 发现）：
+      search_evidence → max_local_searches；search_external_sources → max_external_searches；
+      fetch_external_content → max_fetches。
+
+    返回 None 表示可执行；否则返回对应 stop_reason（供调用方记 budget_exhausted）。
+    """
+    u = state.usage
+    need = 2 if tool_name == "fetch_external_content" else 1
+    if (u.tool_calls + need) > budget.max_tool_calls:
+        return "BUDGET_TOOL_CALLS"
+    if tool_name == "search_evidence" and u.local_searches >= budget.max_local_searches:
+        return "BUDGET_TOOL_CALLS"
+    if tool_name == "search_external_sources" and u.external_searches >= budget.max_external_searches:
+        return "BUDGET_EXTERNAL"
+    if tool_name == "fetch_external_content" and u.fetches >= budget.max_fetches:
+        return "BUDGET_EXTERNAL"
+    return None
+
+
+def budget_has_room(state: H.ResearchState, budget: ResearchBudget) -> bool:
+    """是否还有至少一次补检/动作空间（未超预算且还剩回合）。"""
+    if check_budget(state, budget) is not None:
+        return False
+    return state.usage.rounds < budget.max_rounds
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def _main(argv: list[str]) -> int:
+    import argparse
+    import sys
+
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+
+    parser = argparse.ArgumentParser(
+        prog="python -m harness.policies", description="预算/补检/去重规则自检")
+    parser.add_argument("--self-check", action="store_true")
+    args = parser.parse_args(argv)
+
+    if args.self_check:
+        print(json.dumps({
+            "default_budget": DEFAULT_BUDGET.as_dict(),
+            "supplement_triggers": list(SUPPLEMENT_TRIGGERS),
+            "dedup_key_sample": dedup_key(TC.ToolCall(
+                call_id="x", tool_name="search_evidence",
+                arguments={"company_id": "300750", "query": "实际控制人"},
+                idempotency_key="k", need_id="n", batch_id="b")),
+        }, ensure_ascii=False, indent=2))
+        return 0
+
+    parser.print_help()
+    return 1
+
+
+if __name__ == "__main__":
+    import sys
+
+    sys.exit(_main(sys.argv[1:]))

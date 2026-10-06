@@ -1,0 +1,14 @@
+{
+ "manual_review_required": true,
+ "artifact": "canonical_baseline_manifest.json",
+ "fixture_kind": "canonical_deterministic_baseline",
+ "scope": "evaluation-only：供 evals 的确定性测试在干净 checkout 下证明基线绑定语义",
+ "run_dir": "baseline_canonical_v1",
+ "block_count": 6,
+ "files": {
+  "coverage_blocks.json": "41acd49d2700e81952d6a5d84981faad02c368a8b3f0d91640646d0a4ea37a56",
+  "coverage_summary.json": "68f92b31a634c744f7b3c343ebc4b2c4ed91f19ffb17f78cb3d4d40354ce3578",
+  "run_manifest.json": "9fede3ce5a4c8b00d367f438c33fcf1cc093f18868829192a6e4b8c21fbf143d"
+ },
+ "note": "本 manifest 与它绑定的三个文件都受 Git 跟踪。真实 TS2 冻结基线（769 条）**不**在这里，也不进 Git；真实 acceptance 仍然 fail-closed 要求本地完整 TS2 产物。本 fixture 只证明绑定语义（精确目录名 + 关键文件 SHA256 + 块数，禁止 glob / mtime / latest），不含任何真实主体信息。"
+}

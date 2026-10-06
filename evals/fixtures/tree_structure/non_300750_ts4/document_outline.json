@@ -1,0 +1,704 @@
+{
+  "algorithm_version": "oa-3",
+  "candidate_sources": [
+    "pdf_bookmarks",
+    "toc_page",
+    "body_numbering"
+  ],
+  "content_fingerprint": "b67e569c7cf328b6cbdef655b255700f241bdf8e116577a258799517feb9cc9f",
+  "document_id": "FIXTURE_BOND_2026",
+  "document_version": "sha256-d2404f674f81e788",
+  "edges": [
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-cccc80be2bfc64d5",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-679854d5b93b4c41",
+      "from_ref": "node:on-b6ccbcb3d25dfcb1",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=0->1|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-ddb8450530e77910"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-0141b0a4d7c17a21",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-c34468e226ac3646",
+      "from_ref": "node:on-ddb8450530e77910",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=1->2|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-179eb2a4c2ce9d53"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-ae636f1626d2581f",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-c2d6e62227e35678",
+      "from_ref": "node:on-179eb2a4c2ce9d53",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=2->3|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-40bb8eed74d58fe6"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-a9c80056bafbeca7",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-aaae06187fe5078a",
+      "from_ref": "node:on-40bb8eed74d58fe6",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=3->4|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-fc43b0a2f7adc906"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-e8b98ed8089755d6",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-69cbbb137c2bc85d",
+      "from_ref": "node:on-40bb8eed74d58fe6",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=3->4|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-d1d8ab59098f6e94"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-f4d23a885198b4f4",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-04e6bb69d4eb17b7",
+      "from_ref": "node:on-179eb2a4c2ce9d53",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=2->3|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-5f1d8bd2be48c90f"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-d48f4e9d7fd6fdd4",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-ef055ac3bc8583d6",
+      "from_ref": "node:on-f76f451a7dc28b3b",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=0->1|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-5faae5e696f04d37"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-e0b9c1fd8731bab4",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-5742f1d600582c87",
+      "from_ref": "node:on-5faae5e696f04d37",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=1->2|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-2175561509cf9043"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-6bcee9a470a9e255",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-c09b41bb5e5315aa",
+      "from_ref": "node:on-263d52b0c31b8bbe",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=0->1|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-23c38586a99d6e74"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-2457d923295cbeff",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-ef86876fdc05a6a1",
+      "from_ref": "node:on-23c38586a99d6e74",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=1->2|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-b95e15901156fe13"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-cbeb23fa10f2a9c5",
+      "edge_kind": "parent_child",
+      "edge_locator": "loc-re-e0e1d2e4e4f2516a",
+      "from_ref": "node:on-23c38586a99d6e74",
+      "is_resolved": true,
+      "occurrence": null,
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "derived:structural_path_prefix|level=1->2|child_ids_symmetric",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-8e1d57b258e35726"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-b0bf21ef52d20a0f",
+      "edge_kind": "toc_to_body",
+      "edge_locator": "loc-re-a84767181d3b6d47",
+      "from_ref": "toc:toc-b121350ba2c4d33a",
+      "is_resolved": true,
+      "occurrence": {
+        "char_end": 21,
+        "char_start": 0,
+        "declared_target": "第一节 经营情况",
+        "line_index": 2,
+        "normalized_text": "第一节 经营情况 .......... 2",
+        "occurrence_index": 0,
+        "page_number": 2,
+        "reference_kind": "toc_to_body",
+        "reference_marker": "第一节 经营情况",
+        "schema_type": "ReferenceOccurrence",
+        "source_ref": "toc:toc-b121350ba2c4d33a"
+      },
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "toc_title_match:ttm-1|toc_page_label_match:tpl-1|label=2->page3|node_anchor_verified",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-b6ccbcb3d25dfcb1"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-ad439b1f98ee3f8c",
+      "edge_kind": "toc_to_body",
+      "edge_locator": "loc-re-478e1e6c8ca5adaa",
+      "from_ref": "toc:toc-41cf06f58c613515",
+      "is_resolved": true,
+      "occurrence": {
+        "char_end": 21,
+        "char_start": 0,
+        "declared_target": "第二节 财务信息",
+        "line_index": 3,
+        "normalized_text": "第二节 财务信息 .......... 4",
+        "occurrence_index": 0,
+        "page_number": 2,
+        "reference_kind": "toc_to_body",
+        "reference_marker": "第二节 财务信息",
+        "schema_type": "ReferenceOccurrence",
+        "source_ref": "toc:toc-41cf06f58c613515"
+      },
+      "reason_code": null,
+      "reference_edge_version": "re-1",
+      "resolution_evidence": "toc_title_match:ttm-1|toc_page_label_match:tpl-1|label=4->page5|node_anchor_verified",
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": "node:on-f76f451a7dc28b3b"
+    },
+    {
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "edge_id": "re-b67d1515fa6205f1",
+      "edge_kind": "toc_to_body",
+      "edge_locator": "loc-re-11bd951572a90974",
+      "from_ref": "toc:toc-268b9ea43f58709b",
+      "is_resolved": false,
+      "occurrence": {
+        "char_end": 23,
+        "char_start": 0,
+        "declared_target": "第九节 不存在的章节",
+        "line_index": 4,
+        "normalized_text": "第九节 不存在的章节 .......... 3",
+        "occurrence_index": 0,
+        "page_number": 2,
+        "reference_kind": "toc_to_body",
+        "reference_marker": "第九节 不存在的章节",
+        "schema_type": "ReferenceOccurrence",
+        "source_ref": "toc:toc-268b9ea43f58709b"
+      },
+      "reason_code": "target_not_in_scope",
+      "reference_edge_version": "re-1",
+      "resolution_evidence": null,
+      "schema_type": "ReferenceEdge",
+      "schema_version": "res-4",
+      "to_ref": null
+    }
+  ],
+  "nodes": [
+    {
+      "child_ids": [
+        "on-ddb8450530e77910"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 0,
+      "node_id": "on-b6ccbcb3d25dfcb1",
+      "ordinal": 0,
+      "parent_id": null,
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        3,
+        1,
+        [
+          72.0,
+          56.0,
+          200.0,
+          75.2
+        ]
+      ],
+      "structural_path": [
+        "第一节经营情况"
+      ],
+      "title": "第一节 经营情况",
+      "title_normalized": "第一节经营情况"
+    },
+    {
+      "child_ids": [
+        "on-179eb2a4c2ce9d53"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 1,
+      "node_id": "on-ddb8450530e77910",
+      "ordinal": 0,
+      "parent_id": "on-b6ccbcb3d25dfcb1",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        3,
+        2,
+        [
+          72.0,
+          86.0,
+          156.0,
+          102.8
+        ]
+      ],
+      "structural_path": [
+        "第一节经营情况",
+        "一、主营业务"
+      ],
+      "title": "一、主营业务",
+      "title_normalized": "一、主营业务"
+    },
+    {
+      "child_ids": [
+        "on-40bb8eed74d58fe6",
+        "on-5f1d8bd2be48c90f"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 2,
+      "node_id": "on-179eb2a4c2ce9d53",
+      "ordinal": 0,
+      "parent_id": "on-ddb8450530e77910",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        3,
+        3,
+        [
+          72.0,
+          115.5,
+          159.5,
+          130.5
+        ]
+      ],
+      "structural_path": [
+        "第一节经营情况",
+        "一、主营业务",
+        "（一）业务构成"
+      ],
+      "title": "（一）业务构成",
+      "title_normalized": "（一）业务构成"
+    },
+    {
+      "child_ids": [
+        "on-fc43b0a2f7adc906",
+        "on-d1d8ab59098f6e94"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 3,
+      "node_id": "on-40bb8eed74d58fe6",
+      "ordinal": 0,
+      "parent_id": "on-179eb2a4c2ce9d53",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        3,
+        4,
+        [
+          72.0,
+          144.0,
+          144.0,
+          158.4
+        ]
+      ],
+      "structural_path": [
+        "第一节经营情况",
+        "一、主营业务",
+        "（一）业务构成",
+        "1、主要产品"
+      ],
+      "title": "1、主要产品",
+      "title_normalized": "1、主要产品"
+    },
+    {
+      "child_ids": [],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 4,
+      "node_id": "on-fc43b0a2f7adc906",
+      "ordinal": 0,
+      "parent_id": "on-40bb8eed74d58fe6",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        3,
+        5,
+        [
+          72.0,
+          172.5,
+          141.0,
+          186.3
+        ]
+      ],
+      "structural_path": [
+        "第一节经营情况",
+        "一、主营业务",
+        "（一）业务构成",
+        "1、主要产品",
+        "（1）产品甲"
+      ],
+      "title": "（1）产品甲",
+      "title_normalized": "（1）产品甲"
+    },
+    {
+      "child_ids": [],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 4,
+      "node_id": "on-d1d8ab59098f6e94",
+      "ordinal": 1,
+      "parent_id": "on-40bb8eed74d58fe6",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        3,
+        9,
+        [
+          72.0,
+          308.5,
+          141.0,
+          322.3
+        ]
+      ],
+      "structural_path": [
+        "第一节经营情况",
+        "一、主营业务",
+        "（一）业务构成",
+        "1、主要产品",
+        "（2）产品乙"
+      ],
+      "title": "（2）产品乙",
+      "title_normalized": "（2）产品乙"
+    },
+    {
+      "child_ids": [],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 3,
+      "node_id": "on-5f1d8bd2be48c90f",
+      "ordinal": 1,
+      "parent_id": "on-179eb2a4c2ce9d53",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        3,
+        10,
+        [
+          72.0,
+          336.0,
+          144.0,
+          350.4
+        ]
+      ],
+      "structural_path": [
+        "第一节经营情况",
+        "一、主营业务",
+        "（一）业务构成",
+        "2、主要客户"
+      ],
+      "title": "2、主要客户",
+      "title_normalized": "2、主要客户"
+    },
+    {
+      "child_ids": [
+        "on-5faae5e696f04d37"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 0,
+      "node_id": "on-f76f451a7dc28b3b",
+      "ordinal": 1,
+      "parent_id": null,
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        5,
+        1,
+        [
+          72.0,
+          56.0,
+          200.0,
+          75.2
+        ]
+      ],
+      "structural_path": [
+        "第二节财务信息"
+      ],
+      "title": "第二节 财务信息",
+      "title_normalized": "第二节财务信息"
+    },
+    {
+      "child_ids": [
+        "on-2175561509cf9043"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 1,
+      "node_id": "on-5faae5e696f04d37",
+      "ordinal": 0,
+      "parent_id": "on-f76f451a7dc28b3b",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        5,
+        2,
+        [
+          72.0,
+          86.0,
+          184.0,
+          102.8
+        ]
+      ],
+      "structural_path": [
+        "第二节财务信息",
+        "一、主要会计数据"
+      ],
+      "title": "一、主要会计数据",
+      "title_normalized": "一、主要会计数据"
+    },
+    {
+      "child_ids": [],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 2,
+      "node_id": "on-2175561509cf9043",
+      "ordinal": 0,
+      "parent_id": "on-5faae5e696f04d37",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        5,
+        3,
+        [
+          72.0,
+          115.5,
+          184.5,
+          130.5
+        ]
+      ],
+      "structural_path": [
+        "第二节财务信息",
+        "一、主要会计数据",
+        "（一）资产负债情况"
+      ],
+      "title": "（一）资产负债情况",
+      "title_normalized": "（一）资产负债情况"
+    },
+    {
+      "child_ids": [
+        "on-23c38586a99d6e74"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 0,
+      "node_id": "on-263d52b0c31b8bbe",
+      "ordinal": 2,
+      "parent_id": null,
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        6,
+        1,
+        [
+          72.0,
+          56.0,
+          200.0,
+          75.2
+        ]
+      ],
+      "structural_path": [
+        "第三节其他事项"
+      ],
+      "title": "第三节 其他事项",
+      "title_normalized": "第三节其他事项"
+    },
+    {
+      "child_ids": [
+        "on-b95e15901156fe13",
+        "on-8e1d57b258e35726"
+      ],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 1,
+      "node_id": "on-23c38586a99d6e74",
+      "ordinal": 0,
+      "parent_id": "on-263d52b0c31b8bbe",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        6,
+        2,
+        [
+          72.0,
+          86.0,
+          156.0,
+          102.8
+        ]
+      ],
+      "structural_path": [
+        "第三节其他事项",
+        "一、主要业务"
+      ],
+      "title": "一、主要业务",
+      "title_normalized": "一、主要业务"
+    },
+    {
+      "child_ids": [],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 2,
+      "node_id": "on-b95e15901156fe13",
+      "ordinal": 0,
+      "parent_id": "on-23c38586a99d6e74",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        6,
+        3,
+        [
+          72.0,
+          115.5,
+          159.5,
+          130.5
+        ]
+      ],
+      "structural_path": [
+        "第三节其他事项",
+        "一、主要业务",
+        "（一）业务构成"
+      ],
+      "title": "（一）业务构成",
+      "title_normalized": "（一）业务构成"
+    },
+    {
+      "child_ids": [],
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "level": 2,
+      "node_id": "on-8e1d57b258e35726",
+      "ordinal": 1,
+      "parent_id": "on-23c38586a99d6e74",
+      "schema_type": "OutlineNode",
+      "source_anchor": [
+        7,
+        4,
+        [
+          72.0,
+          317.5,
+          159.5,
+          332.5
+        ]
+      ],
+      "structural_path": [
+        "第三节其他事项",
+        "一、主要业务",
+        "（一）成本分析"
+      ],
+      "title": "（一）成本分析",
+      "title_normalized": "（一）成本分析"
+    }
+  ],
+  "outline_id": "do-b67e569c7cf328b6",
+  "outline_locator": "loc-do-27bfe6bf5abae3b1",
+  "page_layout_id": "pl-4da686515658259e",
+  "schema_type": "DocumentOutline",
+  "schema_version": "do-4",
+  "unassigned": [
+    {
+      "alignment_ids": [],
+      "char_range": [
+        0,
+        9
+      ],
+      "component_evidence_refs": [],
+      "confidence": 0.667,
+      "content_fingerprint": "9b3870f8cacf30c3fcacc48d78755a61104df4cfdd213b6e08d5bbf87a852f39",
+      "document_id": "FIXTURE_BOND_2026",
+      "document_outline_locator": "loc-do-27bfe6bf5abae3b1",
+      "document_version": "sha256-d2404f674f81e788",
+      "end_anchor": [
+        2,
+        4,
+        [
+          72.0,
+          133.0,
+          325.0,
+          146.2
+        ]
+      ],
+      "evidence_set_version": "no-evidence-set",
+      "fallback_derivation": null,
+      "is_cross_heading": false,
+      "is_fallback": false,
+      "layout_line_refs": [
+        [
+          2,
+          4
+        ]
+      ],
+      "node_id": null,
+      "normalized_text": "第九节不存在的章节",
+      "page_range": [
+        2,
+        2
+      ],
+      "role": "unassigned",
+      "schema_type": "OutlineSpan",
+      "schema_version": "os-4",
+      "span_builder_version": "sb-1",
+      "span_id": "os-f2362eb917f8f099",
+      "span_locator": "loc-os-d6793e10c0fb54d2",
+      "start_anchor": [
+        2,
+        4,
+        [
+          72.0,
+          133.0,
+          325.0,
+          146.2
+        ]
+      ],
+      "unassigned_reason": "toc_unmatched"
+    }
+  ]
+}

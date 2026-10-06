@@ -1,0 +1,192 @@
+{
+  "classification_profile_fingerprint": "225aeb8eef6b6d3130b3037e33b0b86f2ed9eb4c795f187ad8c80ec6501b1f92",
+  "classification_profile_id": "tcp-824b2c929bb73120",
+  "classification_profile_locator": "loc-tcp-7f9843426dc0a67a",
+  "conflict_rule": "fail_closed_unclassified",
+  "main_statement_patterns": [
+    {
+      "all_tokens": [],
+      "any_tokens": [],
+      "kind": "contains_any",
+      "order": 1,
+      "pattern_key": "balance_sheet",
+      "schema_type": "HeadingPattern",
+      "structure_class": "financial_main_statement",
+      "tokens": [
+        "资产负债表"
+      ]
+    },
+    {
+      "all_tokens": [],
+      "any_tokens": [],
+      "kind": "contains_any",
+      "order": 2,
+      "pattern_key": "income_statement",
+      "schema_type": "HeadingPattern",
+      "structure_class": "financial_main_statement",
+      "tokens": [
+        "利润表",
+        "损益表"
+      ]
+    },
+    {
+      "all_tokens": [],
+      "any_tokens": [],
+      "kind": "contains_any",
+      "order": 3,
+      "pattern_key": "cash_flow_statement",
+      "schema_type": "HeadingPattern",
+      "structure_class": "financial_main_statement",
+      "tokens": [
+        "现金流量表"
+      ]
+    },
+    {
+      "all_tokens": [],
+      "any_tokens": [],
+      "kind": "contains_any",
+      "order": 4,
+      "pattern_key": "equity_change_statement",
+      "schema_type": "HeadingPattern",
+      "structure_class": "financial_main_statement",
+      "tokens": [
+        "所有者权益变动表",
+        "股东权益变动表"
+      ]
+    }
+  ],
+  "normalization_rules": [
+    {
+      "chars": null,
+      "kind": "strip_whitespace",
+      "order": 1,
+      "pattern": null,
+      "replacement": null,
+      "rule_key": "strip_whitespace",
+      "schema_type": "TitleNormalizationRule"
+    },
+    {
+      "chars": null,
+      "kind": "regex_sub",
+      "order": 2,
+      "pattern": "^(?:第[一二三四五六七八九十百]+[节章篇部分]|[（(][一二三四五六七八九十百0-9]+[)）]|[一二三四五六七八九十百]+[、．.]|[0-9]+[、．.)）])\\s*",
+      "replacement": "",
+      "rule_key": "strip_leading_enumeration",
+      "schema_type": "TitleNormalizationRule"
+    },
+    {
+      "chars": null,
+      "kind": "regex_sub",
+      "order": 3,
+      "pattern": "[（(](?:合并|母公司|母公司及子公司|单位[:：][^）)]{0,24})[)）]",
+      "replacement": "",
+      "rule_key": "strip_parenthetical_scope",
+      "schema_type": "TitleNormalizationRule"
+    },
+    {
+      "chars": "：:。.、,，;；　  ",
+      "kind": "strip_chars",
+      "order": 4,
+      "pattern": null,
+      "replacement": null,
+      "rule_key": "strip_trailing_and_surrounding_punctuation",
+      "schema_type": "TitleNormalizationRule"
+    }
+  ],
+  "normalization_version": "tcn-1",
+  "note_subtree_patterns": [
+    {
+      "all_tokens": [],
+      "any_tokens": [],
+      "kind": "contains_any",
+      "order": 1,
+      "pattern_key": "financial_statement_notes",
+      "schema_type": "HeadingPattern",
+      "structure_class": "note_table",
+      "tokens": [
+        "财务报表附注",
+        "会计报表附注",
+        "财务报表注释",
+        "财务报表项目注释",
+        "报表附注"
+      ]
+    },
+    {
+      "all_tokens": [
+        "注释"
+      ],
+      "any_tokens": [
+        "项目",
+        "报表"
+      ],
+      "kind": "contains_all_with_any",
+      "order": 2,
+      "pattern_key": "statement_item_notes",
+      "schema_type": "HeadingPattern",
+      "structure_class": "note_table",
+      "tokens": []
+    },
+    {
+      "all_tokens": [],
+      "any_tokens": [],
+      "kind": "contains_any",
+      "order": 3,
+      "pattern_key": "notes_section",
+      "schema_type": "HeadingPattern",
+      "structure_class": "note_table",
+      "tokens": [
+        "附注"
+      ]
+    }
+  ],
+  "priority": [
+    {
+      "order": 1,
+      "schema_type": "ClassificationPriorityRow",
+      "structure_class": "unclassified",
+      "when": "owner_or_path_or_boundary_missing_or_unresolvable_conflict"
+    },
+    {
+      "order": 2,
+      "schema_type": "ClassificationPriorityRow",
+      "structure_class": "note_table",
+      "when": "ancestor_path_matches_note_subtree_patterns"
+    },
+    {
+      "order": 3,
+      "schema_type": "ClassificationPriorityRow",
+      "structure_class": "financial_main_statement",
+      "when": "outside_notes_subtree_and_nearest_heading_matches_main_statement_patterns"
+    },
+    {
+      "order": 4,
+      "schema_type": "ClassificationPriorityRow",
+      "structure_class": "ordinary_business_table",
+      "when": "inside_verified_body_node_or_boundary_and_none_above"
+    },
+    {
+      "order": 5,
+      "schema_type": "ClassificationPriorityRow",
+      "structure_class": "unclassified",
+      "when": "otherwise"
+    }
+  ],
+  "profile_key": "table-classification-v1",
+  "profile_version": "tcp-1",
+  "schema_type": "TableClassificationProfile",
+  "schema_version": "tcp-1",
+  "subject_strip": {
+    "apply_as": "retry_once_after_no_match",
+    "kind": "corporate_suffix_prefix",
+    "max_prefix_chars": 40,
+    "schema_type": "SubjectStripRule",
+    "suffixes": [
+      "股份有限公司",
+      "有限责任公司",
+      "有限公司",
+      "集团公司",
+      "集团",
+      "公司"
+    ]
+  }
+}

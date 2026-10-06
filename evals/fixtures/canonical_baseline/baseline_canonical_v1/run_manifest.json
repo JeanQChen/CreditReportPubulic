@@ -1,0 +1,13 @@
+{
+ "manual_review_required": true,
+ "fixture_kind": "canonical_deterministic_baseline",
+ "run_id": "baseline_canonical_v1",
+ "block_count": 6,
+ "document_ids": [
+  "CANON_DOC_A",
+  "CANON_DOC_B",
+  "CANON_DOC_C"
+ ],
+ "scope": "evaluation-only",
+ "note": "受 Git 跟踪的极小 canonical 基线，只用于在干净 checkout 下证明「精确目录名 + 关键文件 SHA256 + 块数」的绑定语义；它不是 TS2 冻结基线的替代品，也不参与任何真实文档对账，且不含任何真实主体信息。"
+}

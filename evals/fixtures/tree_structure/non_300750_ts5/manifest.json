@@ -1,0 +1,58 @@
+{
+  "fixture_kind": "ts5_non_300750_positive_v1",
+  "fixture_stage": "TS5",
+  "manifest_note": "TS5 侧对**同一份**版本化非 300750 正向夹具的独立 pin。它不复制成员文件：成员内容仍只存在于 `non_300750_ts4/`，由 `document_structure.evidence_gateway.FIXTURE_ROOT_RELPATH` 指向并经 `load_fixture_root()` 逐成员核验后签发 `pinned_acceptance/versioned_fixture` 交接。TS5 不得为验收另建第二套 fixture 运行时；本文件只把该夹具的身份与 TS5 期望结果固定下来，任何漂移 fail-closed。`trust_root_schema_version` 随信任锚 successor 升为 `ttr-2`（pin 必须声明 current 版本，否则 runner 在 STEP 3 即 fail-closed）；`expected_ts5` 仍逐字符沿用旧口径，本文件不因升版而改动任何期望值。",
+  "ts5_document_key": "FIXTURE_BOND_2026__non_300750_ts4",
+  "trust_root_schema_version": "ttr-2",
+  "ts4_fixture_root_relpath": "evals/fixtures/tree_structure/non_300750_ts4",
+  "ts4_fixture_manifest_relpath": "evals/fixtures/tree_structure/non_300750_ts4/manifest.json",
+  "ts4_fixture_manifest_sha256": "470c92399a88efb1489a868f01d5068b403a54d15440bae242da41587b22aafc",
+  "ts4_fixture_kind": "ts4_non_300750_positive_v1",
+  "ts4_fixture_stage": "TS4-A",
+  "member_identity_sha256": "53329846f618fda0c5bb5d7725ce020d3952603013d42283bba83b5baa5bba10",
+  "members": [
+    {
+      "relpath": "page_layout.json",
+      "role": "page_layout",
+      "sha256": "81873ca534b3a0f6575a9d33e1b71004fa872bbaaf1f97e63a1ca6e2f84b6dc9",
+      "size": 83335
+    },
+    {
+      "relpath": "document_outline.json",
+      "role": "document_outline",
+      "sha256": "a864bbb52c8aaf11cfd8878181577ed507d30254fa72c5de6082d6c57f0e1bbc",
+      "size": 20731
+    },
+    {
+      "relpath": "evidence_set.json",
+      "role": "evidence_set",
+      "sha256": "10de3ffa9610b726953857d6cff2bf861b73700be0ec304ef639d3d70b766eb1",
+      "size": 8064
+    }
+  ],
+  "source_pdf": {
+    "relpath": "evaluation/results/tree_structure_ts3_outline_ts3_outline_tocr2_closure_p2final_20260918T130000Z/fixture_non_300750_bond.pdf",
+    "sha256": "d2404f674f81e78873cc62dc7cb1eff76a5d02230b97d95ad6028a8233381fb8",
+    "size": 21301
+  },
+  "company_id": "555555",
+  "document_id": "FIXTURE_BOND_2026",
+  "document_version": "sha256-d2404f674f81e788",
+  "page_layout_id": "pl-4da686515658259e",
+  "outline_id": "do-b67e569c7cf328b6",
+  "page_count": 9,
+  "evidence_block_count": 9,
+  "evidence_set_version": "fsv-non300750-bond-1",
+  "expected_upstream": {
+    "ts4_snapshot_id": "sbs-2f3ed93a3f08fd50",
+    "ts4_component_count": 68,
+    "ts4_disposition_count": 8
+  },
+  "expected_ts5": {
+    "table_count": 1,
+    "final_span_count": 5,
+    "blocking_gap_count": 0,
+    "verifier_issues_capability": true,
+    "document_blocked": false
+  }
+}

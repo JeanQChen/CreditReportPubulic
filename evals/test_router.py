@@ -1,0 +1,284 @@
+"""Eval: Router（规则优先 + fallback 协议）—— Phase 2 Commit 2。
+
+用法: python -m evals.test_router
+
+覆盖（任务书 §11 / 契约修正 A）：
+- 五路由命中：DB（字段/指标）、EXTERNAL、DEEP、DIRECT、STANDARD；
+- DB 只看能力不看当前值：supported 但 available 缺失仍路由 DB_LOOKUP；
+- 冲突（DB 目标 + 外部时效）→ fallback；无 provider → FALLBACK_UNAVAILABLE；
+- fallback 非法 route / 非法 JSON → FAILED；
+- 公司无关表达不硬编码。
+"""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from routing import router as R
+from routing import schema as S
+
+
+def _need(q, need_id="N1", time_scope=None, **over):
+    base = dict(
+        need_id=need_id, section_id="SEC", question=q,
+        required_evidence_types=["paragraph"], required_source_types=["annual_report"],
+        time_scope=time_scope, priority="P0", depends_on=[],
+    )
+    base.update(over)
+    return S.InformationNeed(**base)
+
+
+def _context(**over):
+    base = dict(
+        company_id="300750", report_as_of="2025-06-30",
+        available_document_ids=["NDSD_2025_year"],
+        available_source_types=["annual_report"],
+        supported_db_fields=["TOTAL_ASSETS", "NET_PROFIT", "NET_PROFIT_PARENT",
+                             "OPERATING_CASH_FLOW", "OPERATING_REVENUE"],
+        supported_metric_ids=["PROF_ROE", "PROF_GROSS_MARGIN", "SOLV_CURRENT_RATIO"],
+        available_db_fields=["TOTAL_ASSETS"], available_metric_ids=["PROF_ROE"],
+        external_research_enabled=False,
+    )
+    base.update(over)
+    return S.RouteContext(**base)
+
+
+def _mock_fallback(decision_or_raiser):
+    """构造 fallback callable：返回 decision 或抛出异常。"""
+    def _f(need, context):
+        if callable(decision_or_raiser):
+            return decision_or_raiser(need, context)
+        if isinstance(decision_or_raiser, Exception):
+            raise decision_or_raiser
+        return decision_or_raiser
+    return _f
+
+
+def main() -> dict:
+    passed = 0
+    failed = 0
+    skipped = 0
+    details: list[str] = []
+
+    def check(cond, msg):
+        nonlocal passed, failed
+        if cond:
+            passed += 1
+            details.append(f"PASS: {msg}")
+        else:
+            failed += 1
+            details.append(f"FAIL: {msg}")
+
+    def route_of(q, ctx=None, fb=None, time_scope=None):
+        r = R.route(_need(q, time_scope=time_scope), ctx or _context(), fallback=fb)
+        return r
+
+    # ---- DB 字段 ----
+    r = route_of("2024 年总资产是多少？")
+    check(r.status == "DECIDED" and r.decision.route == "DB_LOOKUP"
+          and r.decision.reason_code == "REGISTERED_DB_FIELD"
+          and r.decision.filters.get("standard_item_code") == "TOTAL_ASSETS",
+          "总资产 → DB_LOOKUP(field, TOTAL_ASSETS)")
+    f = r.decision.filters
+    check(f.get("snapshot_as_of_date") == "2025-06-30"
+          and f.get("target_period") == "2024-12-31"
+          and f.get("scope") == "consolidated" and f.get("currency") == "CNY"
+          and f.get("purpose") == "credit_analysis",
+          "DB field filter 五元组：snapshot_as_of_date 与 target_period 分离")
+
+    # ---- DB 指标 ----
+    r = route_of("净资产收益率是多少？")
+    check(r.status == "DECIDED" and r.decision.route == "DB_LOOKUP"
+          and r.decision.reason_code == "REGISTERED_FINANCIAL_METRIC"
+          and r.decision.filters.get("formula_id") == "PROF_ROE",
+          "净资产收益率 → DB_LOOKUP(metric, PROF_ROE)")
+    check(bool(r.decision.filters.get("formula_version")),
+          "DB metric filter 携带 formula_version（来自 Formula Registry，非硬编码）")
+
+    # ---- 目标报告期提取：问题年份 ≠ 快照 as_of_date ----
+    r = route_of("2025 年归母净利润是多少？")
+    check(r.status == "DECIDED" and r.decision.route == "DB_LOOKUP"
+          and r.decision.filters.get("target_period") == "2025-12-31"
+          and r.decision.filters.get("snapshot_as_of_date") == "2025-06-30",
+          "目标报告期 2025 提取为 target_period=2025-12-31，与 snapshot_as_of_date 分离")
+
+    # ---- 修正 A：supported 但 available 缺失仍路由 DB（不看当前值）----
+    ctx = _context(supported_db_fields=["NET_PROFIT"], available_db_fields=[],
+                   available_metric_ids=[])
+    r = R.route(_need("2024 年净利润是多少？"), ctx)
+    check(r.status == "DECIDED" and r.decision.route == "DB_LOOKUP",
+          "supported 但当前缺值仍路由 DB_LOOKUP（修正 A）")
+
+    # ---- EXTERNAL（外部来源词 / 时效词）----
+    r = route_of("公司当前市值是多少？")
+    check(r.decision.route == "EXTERNAL_RESEARCH"
+          and r.decision.reason_code == "EXPLICIT_EXTERNAL_RECENCY",
+          "市值 → EXTERNAL_RESEARCH")
+
+    r = route_of("公司有哪些近期监管处罚？")
+    check(r.decision.route == "EXTERNAL_RESEARCH", "监管处罚 → EXTERNAL_RESEARCH")
+
+    # ---- DEEP ----
+    r = route_of("2023-2025 年营收同比变化趋势如何？")
+    check(r.decision.route == "DEEP_RETRIEVAL"
+          and r.decision.reason_code == "CROSS_DOCUMENT_OR_CONFLICT",
+          "同比变化趋势 → DEEP_RETRIEVAL")
+
+    # ---- DIRECT ----
+    r = route_of("公司的实际控制人是谁？")
+    check(r.decision.route == "DIRECT_EVIDENCE"
+          and r.decision.reason_code == "EXACT_DOCUMENT_FIELD",
+          "实际控制人是谁 → DIRECT_EVIDENCE")
+
+    # ---- F3：审计意见/会计师事务所 → DIRECT_EVIDENCE（先于 time_scope 与 DEEP）----
+    r = route_of("2024 年审计意见是什么？")
+    check(r.decision.route == "DIRECT_EVIDENCE"
+          and r.decision.reason_code == "AUDIT_OPINION_FIELD",
+          "审计意见 → DIRECT_EVIDENCE(AUDIT_OPINION_FIELD)")
+
+    # 审计字段 + time_scope 区间无法解析 → 仍 DIRECT（不 fallback）。
+    r = R.route(_need("2023—2025年宁德时代的会计师事务所是否一致？",
+                      time_scope="2023-2025"), _context())
+    check(r.status == "DECIDED" and r.decision.route == "DIRECT_EVIDENCE"
+          and r.decision.reason_code == "AUDIT_OPINION_FIELD",
+          "会计师事务所 + time_scope=2023-2025 → DIRECT（不 FALLBACK_UNAVAILABLE）")
+
+    # 审计字段 + 「是否一致」（DEEP 词）→ 审计字段优先于 DEEP。
+    r = route_of("近三年会计师事务所是否一致？")
+    check(r.decision.route == "DIRECT_EVIDENCE"
+          and r.decision.reason_code == "AUDIT_OPINION_FIELD",
+          "会计师事务所 + 是否一致 → DIRECT（审计优先于 DEEP）")
+
+    # 无审计词 + time_scope 区间无法解析 → 仍 FALLBACK（无回归）。
+    r = R.route(_need("总资产是多少？", time_scope="2023-2025"), _context())
+    check(r.status == "FALLBACK_UNAVAILABLE",
+          "无审计词 + time_scope=2023-2025 → 仍 FALLBACK_UNAVAILABLE")
+
+    # 公司无关（不硬编码宁德时代）。
+    ctx_audit = _context(company_id="601318")
+    r = R.route(_need("审计结论是什么？", need_id="AUD-OTHER"), ctx_audit)
+    check(r.decision.route == "DIRECT_EVIDENCE"
+          and r.decision.reason_code == "AUDIT_OPINION_FIELD",
+          "审计结论公司无关表达同样 DIRECT（无硬编码）")
+
+    # ---- STANDARD（兜底）----
+    r = route_of("公司的核心竞争优势是什么？")
+    check(r.decision.route == "STANDARD_RAG"
+          and r.decision.reason_code == "SECTION_TOPIC_SYNTHESIS",
+          "核心竞争优势 → STANDARD_RAG")
+
+    # ---- time_scope 规范化（契约修正 3：禁止字符串字典序比较）----
+    # 半年期 "2025-H1" == 报告截止 "2025-06-30"，不得按字符串误判为「晚于」→ EXTERNAL。
+    r = R.route(_need("公司的经营模式是怎样的？", time_scope="2025-H1"), _context())
+    check(r.status == "DECIDED" and r.decision.route == "STANDARD_RAG",
+          "time_scope=2025-H1 与 report_as_of=2025-06-30 相等，不误判为 EXTERNAL")
+
+    # 季度期 "2026Q1" > "2025-06-30" → 确实晚于本地截止 → EXTERNAL（规范化后比较）。
+    r = R.route(_need("公司的市占率情况？", time_scope="2026Q1"), _context())
+    check(r.status == "DECIDED" and r.decision.route == "EXTERNAL_RESEARCH",
+          "time_scope=2026Q1 晚于本地截止（规范化后）→ EXTERNAL")
+
+    # time_scope 无法可靠解析 → fallback，且给出 TIME_SCOPE_UNPARSEABLE。
+    r = R.route(_need("总资产是多少？", time_scope="过去三年"), _context())
+    check(r.status == "FALLBACK_UNAVAILABLE"
+          and r.error_code == "ROUTER_FALLBACK_UNAVAILABLE"
+          and r.reason_code == "TIME_SCOPE_UNPARSEABLE",
+          "time_scope 无法解析 → FALLBACK_UNAVAILABLE(TIME_SCOPE_UNPARSEABLE)")
+
+    # ---- 冲突（DB 目标 + 外部时效）→ fallback ----
+    # 无 provider → FALLBACK_UNAVAILABLE
+    r = route_of("公司最新总资产是多少？")
+    check(r.status == "FALLBACK_UNAVAILABLE" and r.decision is None
+          and r.error_code == "ROUTER_FALLBACK_UNAVAILABLE",
+          "DB+时效冲突且无 fallback → FALLBACK_UNAVAILABLE")
+
+    # 有 provider → DECIDED（llm_fallback）
+    fb = _mock_fallback(S.RouteDecision(
+        need_id="N1", route="DB_LOOKUP", reason_code="REGISTERED_DB_FIELD",
+        filters={"db_target_type": "field", "standard_item_code": "TOTAL_ASSETS",
+                 "snapshot_as_of_date": "2025-06-30", "target_period": "2025-06-30",
+                 "scope": "consolidated", "currency": "CNY",
+                 "purpose": "credit_analysis"},
+        budget=R._BUDGET_NOOP, fallback_routes=[], decided_by="llm_fallback",
+        rule_version=S.RULE_VERSION, confidence="high"))
+    r = route_of("公司最新总资产是多少？", fb=fb)
+    check(r.status == "DECIDED" and r.decision.decided_by == "llm_fallback",
+          "冲突 + fallback → DECIDED(llm_fallback)")
+
+    # 非法 route → FAILED
+    bad = S.RouteDecision(
+        need_id="N1", route="RAG", reason_code="SECTION_TOPIC_SYNTHESIS",
+        filters={}, budget=R._BUDGET_NOOP, fallback_routes=[],
+        decided_by="llm_fallback", rule_version=S.RULE_VERSION, confidence="high")
+    r = route_of("公司最新总资产是多少？", fb=_mock_fallback(bad))
+    check(r.status == "FAILED" and r.error_code == "ROUTER_FALLBACK_SCHEMA_FAILURE",
+          "fallback 非法 route → FAILED")
+
+    # 非法 JSON → FAILED
+    def _raise_json(need, context):
+        raise ValueError("非法 JSON")
+    r = route_of("公司最新总资产是多少？", fb=_raise_json)
+    check(r.status == "FAILED" and r.error_code == "ROUTER_FALLBACK_SCHEMA_FAILURE",
+          "fallback 抛异常 → FAILED")
+
+    # ---- 公司无关（不硬编码宁德时代）----
+    ctx_other = _context(company_id="600000")
+    r = R.route(_need("总资产是多少？", need_id="SYN-1"), ctx_other)
+    check(r.decision.route == "DB_LOOKUP", "公司无关表达同样路由 DB（无硬编码）")
+
+    # ---- EXTERNAL 不因「财务」二字误路由 DB ----
+    r = route_of("公司的财务情况如何？")
+    check(r.decision.route != "DB_LOOKUP", "「财务」二字不触发 DB")
+
+    # ---- A2：显式外部来源要求（required_evidence_types=[web] / required_source_types=[external]）
+    # 进入路由；含「比较」不能覆盖外部来源约束（§12 P0：可比题被 deep 抢先路由、联网为零）----
+    cmp_need = _need("选择 3～5 家可比公司并做相对比较",
+                     need_id="industry_comparables",
+                     required_evidence_types=["web"],
+                     required_source_types=["external"])
+    r = R.route(cmp_need, _context())
+    check(r.status == "DECIDED" and r.decision.route == "EXTERNAL_RESEARCH",
+          "可比题（web/external + 比较）→ EXTERNAL_RESEARCH，不被 deep 覆盖")
+    check(r.decision.reason_code == "EXPLICIT_EXTERNAL_RECENCY",
+          "可比题 reason_code = EXPLICIT_EXTERNAL_RECENCY")
+
+    # 显式外部要求，无「比较」词 → 仍 EXTERNAL。
+    r = R.route(_need("可比公司有哪些？", need_id="cmp-plain",
+                      required_evidence_types=["web"],
+                      required_source_types=["external"]), _context())
+    check(r.status == "DECIDED" and r.decision.route == "EXTERNAL_RESEARCH",
+          "显式 web/external（无比较词）→ EXTERNAL_RESEARCH")
+
+    # 显式外部 + 本地来源类（company_industry）→ 混合需求识别。
+    mix_need = _need("行业风险向借款人收入、成本、现金流的传导",
+                     need_id="industry_risk_transmission",
+                     required_evidence_types=["paragraph"],
+                     required_source_types=["company_industry", "external"])
+    check(R.is_mixed_need(mix_need, _context()) is True,
+          "外部 + 本地来源类 → is_mixed_need=True")
+    check(R.is_mixed_need(cmp_need, _context()) is True,
+          "外部 + 比较深信号 → is_mixed_need=True")
+    pure_ext = _need("公司当前市值是多少？", need_id="mcap",
+                     required_evidence_types=["web"],
+                     required_source_types=["external"])
+    check(R.is_mixed_need(pure_ext, _context()) is False,
+          "纯外部（无本地来源/深信号）→ is_mixed_need=False")
+    check(R.requires_external_source(cmp_need) is True,
+          "requires_external_source 识别 web/external")
+
+    # 公司无关（不硬编码宁德时代）：换 company_id 同样路由外部。
+    r = R.route(_need("选择 3～5 家可比公司并做相对比较", need_id="cmp-other",
+                      required_evidence_types=["web"],
+                      required_source_types=["external"]), _context(company_id="600000"))
+    check(r.status == "DECIDED" and r.decision.route == "EXTERNAL_RESEARCH",
+          "可比题公司无关表达同样 EXTERNAL（无硬编码）")
+
+    return {"passed": passed, "failed": failed, "skipped": skipped, "details": details}
+
+
+if __name__ == "__main__":
+    import json
+    print(json.dumps(main(), ensure_ascii=False, indent=2))

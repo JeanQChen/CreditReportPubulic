@@ -1,0 +1,12 @@
+{
+ "fixture_kind": "canonical_deterministic_baseline",
+ "block_count": 6,
+ "verdict_counts": {
+  "aligned": 2,
+  "partially_aligned": 2,
+  "unaligned": 2
+ },
+ "citable_blocks": 4,
+ "documents": 3,
+ "scope": "evaluation-only"
+}

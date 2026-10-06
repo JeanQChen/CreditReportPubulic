@@ -1,0 +1,19 @@
+{
+  "default_profile_key": "table-classification-v1",
+  "profiles": {
+    "table-cell-block-v1": {
+      "file": "table_cell_block_profile_v1.json",
+      "file_sha256": "564a0b75df21f8ec397603c0dce55b74671f20e2bad856c7452011780262f370",
+      "profile_fingerprint": "60c59b33b54bdb753b511c82876ebbd2245620f8ff7837ad58b5822d668b4a6f",
+      "profile_kind": "cell_block"
+    },
+    "table-classification-v1": {
+      "file": "table_classification_profile_v1.json",
+      "file_sha256": "955ed32bebb831481884d73c93161a7b8a5e06e13b9f9616686a8387ba6a0224",
+      "profile_fingerprint": "225aeb8eef6b6d3130b3037e33b0b86f2ed9eb4c795f187ad8c80ec6501b1f92",
+      "profile_kind": "classification"
+    }
+  },
+  "registry_version": "tpr-1",
+  "schema_type": "TableProfileRegistry"
+}

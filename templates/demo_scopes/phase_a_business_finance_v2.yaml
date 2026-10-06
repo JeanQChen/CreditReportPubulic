@@ -1,0 +1,140 @@
+# M930-3 **阶段 A** DemoScope Profile，**v2**（公司无关）。**只增不改**：
+# `phase_a_business_finance_v1.yaml` 与更早两份声明源一字不动，历史 run 与四类冻结资产都不动，
+# 本文件是**新增的第四份声明源**。
+#
+# 与 v1 的实质差异**只有一处**：`selected_topics` 增补 `fin_balance_structure`。
+#   v1 的财务节只选 `fin_source_scope`（确定性来源/口径）与 `fin_solvency`（唯一模型写作 topic），
+#   于是冻结 Contract 里 `fin_balance_structure` 的三栏（`balance_structure` /
+#   `major_account_changes` / `fifteen_pct_forced_analysis`）虽然在 Contract、WritingSpec、
+#   权威快照里都已存在，却**不在任何一次运行的范围内**——`FinancialFactPack` 里的
+#   `item_*` 资产负债事实因此在 Pack→Writer 处被静默丢弃（`pack_writer.scan_financial` 对
+#   `topic_for_fact(fact_id) == OUTSIDE_SECTION_TOPIC` 的事实直接跳过）。
+#   把该 topic 纳入范围，是让**已有**合格事实真正接到读者正文的唯一入口。
+#
+# 为什么**不能**改 v1：v1 是历史基线的范围声明，其 `profile_fingerprint` 进投影、清单与
+# 报告版本身份。改它等于改写历史 run 的身份。新增版本是唯一合规做法。
+#
+# 主体身份（`company_id`、登记名、`report_as_of`、三份来源身份）仍在输入/预检/manifest 里
+# 核实——这不等于选择 `company_identity` topic。`company_identity`、`company_legal_risks`、
+# `industry_scale_cycle` 及相应外部/事件能力在本阶段明确列为 `out_of_scope/not_demonstrated`，
+# 这不是"跳过"、不是"失败"，也不是"来源不存在"。
+#
+# 本文件是**声明源**，不是第二个 wire 类型：加载后一切身份都落在
+# planning.demo_scope_schema.DemoScopeProfile 上，并由末尾的 profile_fingerprint 承诺。
+#
+# 范围推导规则（与前三份同，不反过来从任何公司命中页/答案/既有结果反推）：
+#   1. selected_sections 的每个 section 必须存在；
+#   2. selected_topics 的每个 topic 必须存在，且其父 section 已被**显式**选中；范围
+#      粒度边界是 topic —— 每个被显式选中的 topic 的**全部 question/aspect** 进入范围；
+#   3. 未被显式选中的 topic 一律不进入 Demo 范围；冻结 Contract 的其余部分构成
+#      out_of_scope，二者严格互补、不重叠、不遗漏。
+#
+# 生产规则、Contract、policy、测试与通用派生逻辑不得包含公司名、证券代码、固定页码、
+# 表号、Evidence ID、gold 或答案关键词特判；公司身份只允许存在于输入、运行 manifest、
+# evaluation fixture 与展示产物中。
+#
+# profile_fingerprint 由 `python -m planning.demo_scope --fingerprint` 打印后回填；
+# 加载入口 `load_demo_scope_profile()` 始终 fail-closed，不提供任何绕过开关。
+#
+# `status: candidate` 是**如实**取值，不是占位：本 profile 尚未经人工批准，程序不代签。
+# 它**不影响**加载（`load_demo_scope_profile` 只校验资产与指纹，不校验 profile 自身生命周期），
+# 但读者面因此能看出「这一版范围是谁定的、有没有被批准过」。
+
+schema_version: demo-scope-profile-v1
+profile_id: phase_a_business_finance
+profile_version: v2
+status: candidate
+created_at: '2026-10-03'
+approved_at: null
+frozen_at: null
+
+# 四类冻结资产的版本与内容指纹；**逐字沿用前三份**（本批不改任何冻结资产）。
+# 任一缺失或漂移即 fail-closed。
+assets:
+  contract:
+    asset: templates/contracts/standard_v3.yaml
+    contract_version: v2
+    fingerprint: 5c45eabcad4989622aa3d483d9414304b3dbd0a5127db726f513409d14c6b410
+  source_policy:
+    asset: templates/policies/source_policy_v1.yaml
+    policy_id: source_policy_v1
+    policy_version: v1
+    fingerprint: 12921c67f82dd18876a8bbef4175a47e0b157e6b5921a3693350ad9aa48cbf17
+  writing_spec:
+    asset: templates/writing_specs/credit_report_v1.yaml
+    writing_spec_id: credit_report_v1
+    schema_version: writing-spec-v1
+    fingerprint: 82941438e1adbc7d0a1c685eab2f63b3b7b243ed70829627f6c2f8cdc8626354
+  presentation_profile:
+    asset: templates/presentation_profiles/interview_demo_v1.yaml
+    presentation_profile_id: interview_demo_v1
+    schema_version: presentation-profile-v1
+    fingerprint: ab43d221e97a9b75d9f3fd68f0364ea5f46ecfaf671e5c154588eeb9f2da6ca9
+
+selected_sections:
+  - section_id: company
+    selection_reason: 阶段 A 公司侧：只承载主营业务（`company_business`）这一个 topic 的本地长叙述面
+    design_surface_ids:
+      - ds.local_narrative
+      - ds.tree_material
+      - ds.claim_citation
+      - ds.gap_visibility
+  - section_id: financial
+    selection_reason: 阶段 A 财务侧：承载结构化财务事实、资产负债结构呈现与财务附注三个能力面
+    design_surface_ids:
+      - ds.financial_authority
+      - ds.note_fact
+      - ds.gap_visibility
+
+selected_topics:
+  - topic_id: company_business
+    section_id: company
+    selection_reason: 阶段 A 唯一公司 topic：由多个合格 span 与事实形成可读的主营业务正文
+    design_surface_ids:
+      - ds.local_narrative
+      - ds.tree_material
+      - ds.claim_citation
+      - ds.table_capability
+  - topic_id: fin_source_scope
+    section_id: financial
+    selection_reason: 财务权威面：报表可得性与审计意见的结构化事实与附注事实
+    design_surface_ids:
+      - ds.financial_authority
+      - ds.note_fact
+  # v2 新增（v1 无此条）：把冻结 Contract 已有的资产负债三栏纳入范围，使**已有**合格
+  # `item_*` 事实不再被 `scan_financial` 当作范围外丢弃。它走**确定性**呈现（零模型调用），
+  # 因此**不**占用「一节一个 Writer topic」的名额——`fin_solvency` 仍是本节唯一模型写作 topic。
+  - topic_id: fin_balance_structure
+    section_id: financial
+    selection_reason: 财务权威面：资产负债结构、重大科目变化与 15% 强制分析栏，由合格 item 事实确定性成文
+    design_surface_ids:
+      - ds.financial_authority
+      - ds.table_capability
+      - ds.gap_visibility
+  - topic_id: fin_solvency
+    section_id: financial
+    selection_reason: 财务权威面：偿债能力结构化指标与缺口可见性
+    design_surface_ids:
+      - ds.financial_authority
+      - ds.gap_visibility
+
+# 允许使用的能力取自冻结 Contract 的 allowed_capabilities 词表，不新增动词。
+material_capabilities:
+  - search_evidence
+  - search_tables
+  - inspect_evidence
+  - compare_evidence
+  - verify_claim
+  - search_external_sources
+  - fetch_external_content
+  - lookup_financial_metric
+  - lookup_company_field
+
+fallback_policy_id: navigation_then_bounded_fallback_v1
+budget_policy_id: demo_backbone_budget_v1
+budget_policy_version: v1
+
+company_independent: true
+
+# 由 `python -m planning.demo_scope --fingerprint` 计算并回填。
+profile_fingerprint: ef9a783e1fc459f1cba4701c04d7f1b8cb72963cccf6aede52242cb5f032983c

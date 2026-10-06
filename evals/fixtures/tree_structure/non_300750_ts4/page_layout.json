@@ -1,0 +1,3114 @@
+{
+  "company_id": "555555",
+  "document_id": "FIXTURE_BOND_2026",
+  "document_version": "sha256-d2404f674f81e788",
+  "engine": "pymupdf",
+  "engine_version": "pymupdf-1",
+  "normalization_version": "norm-1",
+  "page_count": 9,
+  "page_layout_id": "pl-4da686515658259e",
+  "page_layout_locator": "loc-pl-9a02d5a2a6a4ba97",
+  "pages": [
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            120.0,
+            100.0,
+            520.0,
+            124.0
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                120.0,
+                100.0,
+                520.0,
+                124.0
+              ],
+              "char_end": 20,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 20.0,
+              "text": "示例发行人 2026 年公司债券年度报告"
+            }
+          ],
+          "text": "示例发行人 2026 年公司债券年度报告"
+        },
+        {
+          "bbox": [
+            72.0,
+            189.0,
+            347.0,
+            202.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                189.0,
+                347.0,
+                202.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。C1"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。C1"
+        },
+        {
+          "bbox": [
+            72.0,
+            211.0,
+            358.0,
+            224.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                211.0,
+                358.0,
+                224.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。C1"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。C1"
+        },
+        {
+          "bbox": [
+            72.0,
+            233.0,
+            358.0,
+            246.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                233.0,
+                358.0,
+                246.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。C1"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。C1"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 1,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            56.0,
+            104.0,
+            75.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                56.0,
+                104.0,
+                75.2
+              ],
+              "char_end": 2,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 16.0,
+              "text": "目录"
+            }
+          ],
+          "text": "目录"
+        },
+        {
+          "bbox": [
+            72.0,
+            89.0,
+            303.0,
+            102.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                89.0,
+                303.0,
+                102.2
+              ],
+              "char_end": 21,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "第一节 经营情况 .......... 2"
+            }
+          ],
+          "text": "第一节 经营情况 .......... 2"
+        },
+        {
+          "bbox": [
+            72.0,
+            111.0,
+            303.0,
+            124.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                111.0,
+                303.0,
+                124.2
+              ],
+              "char_end": 21,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "第二节 财务信息 .......... 4"
+            }
+          ],
+          "text": "第二节 财务信息 .......... 4"
+        },
+        {
+          "bbox": [
+            72.0,
+            133.0,
+            325.0,
+            146.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                133.0,
+                325.0,
+                146.2
+              ],
+              "char_end": 23,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "第九节 不存在的章节 .......... 3"
+            }
+          ],
+          "text": "第九节 不存在的章节 .......... 3"
+        },
+        {
+          "bbox": [
+            72.0,
+            169.0,
+            336.0,
+            182.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                169.0,
+                336.0,
+                182.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。T"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。T"
+        },
+        {
+          "bbox": [
+            72.0,
+            191.0,
+            347.0,
+            204.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 6,
+          "reading_order": 6,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                191.0,
+                347.0,
+                204.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。T"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。T"
+        },
+        {
+          "bbox": [
+            72.0,
+            213.0,
+            347.0,
+            226.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 7,
+          "reading_order": 7,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                213.0,
+                347.0,
+                226.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。T"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。T"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 8,
+          "reading_order": 8,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "1"
+            }
+          ],
+          "text": "1"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 9,
+          "reading_order": 9,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 2,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            56.0,
+            200.0,
+            75.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                56.0,
+                200.0,
+                75.2
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 16.0,
+              "text": "第一节 经营情况"
+            }
+          ],
+          "text": "第一节 经营情况"
+        },
+        {
+          "bbox": [
+            72.0,
+            86.0,
+            156.0,
+            102.8
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                86.0,
+                156.0,
+                102.8
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 14.0,
+              "text": "一、主营业务"
+            }
+          ],
+          "text": "一、主营业务"
+        },
+        {
+          "bbox": [
+            72.0,
+            115.5,
+            159.5,
+            130.5
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                115.5,
+                159.5,
+                130.5
+              ],
+              "char_end": 7,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 12.5,
+              "text": "（一）业务构成"
+            }
+          ],
+          "text": "（一）业务构成"
+        },
+        {
+          "bbox": [
+            72.0,
+            144.0,
+            144.0,
+            158.4
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                144.0,
+                144.0,
+                158.4
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 12.0,
+              "text": "1、主要产品"
+            }
+          ],
+          "text": "1、主要产品"
+        },
+        {
+          "bbox": [
+            72.0,
+            172.5,
+            141.0,
+            186.3
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                172.5,
+                141.0,
+                186.3
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.5,
+              "text": "（1）产品甲"
+            }
+          ],
+          "text": "（1）产品甲"
+        },
+        {
+          "bbox": [
+            72.0,
+            204.0,
+            336.0,
+            217.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 6,
+          "reading_order": 6,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                204.0,
+                336.0,
+                217.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。A"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。A"
+        },
+        {
+          "bbox": [
+            72.0,
+            226.0,
+            347.0,
+            239.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 7,
+          "reading_order": 7,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                226.0,
+                347.0,
+                239.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。A"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。A"
+        },
+        {
+          "bbox": [
+            72.0,
+            248.0,
+            347.0,
+            261.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 8,
+          "reading_order": 8,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                248.0,
+                347.0,
+                261.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。A"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。A"
+        },
+        {
+          "bbox": [
+            72.0,
+            308.5,
+            141.0,
+            322.3
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 9,
+          "reading_order": 9,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                308.5,
+                141.0,
+                322.3
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.5,
+              "text": "（2）产品乙"
+            }
+          ],
+          "text": "（2）产品乙"
+        },
+        {
+          "bbox": [
+            72.0,
+            336.0,
+            144.0,
+            350.4
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 10,
+          "reading_order": 10,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                336.0,
+                144.0,
+                350.4
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 12.0,
+              "text": "2、主要客户"
+            }
+          ],
+          "text": "2、主要客户"
+        },
+        {
+          "bbox": [
+            72.0,
+            367.0,
+            347.0,
+            380.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 11,
+          "reading_order": 11,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                367.0,
+                347.0,
+                380.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。A2"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。A2"
+        },
+        {
+          "bbox": [
+            72.0,
+            389.0,
+            358.0,
+            402.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 12,
+          "reading_order": 12,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                389.0,
+                358.0,
+                402.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。A2"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。A2"
+        },
+        {
+          "bbox": [
+            72.0,
+            411.0,
+            358.0,
+            424.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 13,
+          "reading_order": 13,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                411.0,
+                358.0,
+                424.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。A2"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。A2"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 14,
+          "reading_order": 14,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "2"
+            }
+          ],
+          "text": "2"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 15,
+          "reading_order": 15,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 3,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            139.0,
+            336.0,
+            152.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                139.0,
+                336.0,
+                152.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。B"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。B"
+        },
+        {
+          "bbox": [
+            72.0,
+            161.0,
+            347.0,
+            174.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                161.0,
+                347.0,
+                174.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。B"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。B"
+        },
+        {
+          "bbox": [
+            72.0,
+            183.0,
+            347.0,
+            196.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                183.0,
+                347.0,
+                196.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。B"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。B"
+        },
+        {
+          "bbox": [
+            300.0,
+            289.0,
+            355.0,
+            302.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                289.0,
+                355.0,
+                302.2
+              ],
+              "char_end": 5,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "2025年"
+            }
+          ],
+          "text": "2025年"
+        },
+        {
+          "bbox": [
+            72.0,
+            329.0,
+            160.0,
+            342.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                329.0,
+                160.0,
+                342.2
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "1,234.56"
+            }
+          ],
+          "text": "1,234.56"
+        },
+        {
+          "bbox": [
+            72.0,
+            389.0,
+            105.0,
+            402.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 6,
+          "reading_order": 6,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                389.0,
+                105.0,
+                402.2
+              ],
+              "char_end": 3,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "项目甲"
+            }
+          ],
+          "text": "项目甲"
+        },
+        {
+          "bbox": [
+            280.0,
+            389.0,
+            368.0,
+            402.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 7,
+          "reading_order": 7,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                280.0,
+                389.0,
+                368.0,
+                402.2
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "1,234.56"
+            }
+          ],
+          "text": "1,234.56"
+        },
+        {
+          "bbox": [
+            500.0,
+            389.0,
+            566.0,
+            402.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 8,
+          "reading_order": 8,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                500.0,
+                389.0,
+                566.0,
+                402.2
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "12.34%"
+            }
+          ],
+          "text": "12.34%"
+        },
+        {
+          "bbox": [
+            72.0,
+            409.0,
+            105.0,
+            422.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 9,
+          "reading_order": 9,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                409.0,
+                105.0,
+                422.2
+              ],
+              "char_end": 3,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "项目乙"
+            }
+          ],
+          "text": "项目乙"
+        },
+        {
+          "bbox": [
+            280.0,
+            409.0,
+            368.0,
+            422.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 10,
+          "reading_order": 10,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                280.0,
+                409.0,
+                368.0,
+                422.2
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "2,345.67"
+            }
+          ],
+          "text": "2,345.67"
+        },
+        {
+          "bbox": [
+            500.0,
+            409.0,
+            566.0,
+            422.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 11,
+          "reading_order": 11,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                500.0,
+                409.0,
+                566.0,
+                422.2
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "23.45%"
+            }
+          ],
+          "text": "23.45%"
+        },
+        {
+          "bbox": [
+            72.0,
+            429.0,
+            105.0,
+            442.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 12,
+          "reading_order": 12,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                429.0,
+                105.0,
+                442.2
+              ],
+              "char_end": 3,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "项目丙"
+            }
+          ],
+          "text": "项目丙"
+        },
+        {
+          "bbox": [
+            280.0,
+            429.0,
+            368.0,
+            442.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 13,
+          "reading_order": 13,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                280.0,
+                429.0,
+                368.0,
+                442.2
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "3,456.78"
+            }
+          ],
+          "text": "3,456.78"
+        },
+        {
+          "bbox": [
+            500.0,
+            429.0,
+            566.0,
+            442.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 14,
+          "reading_order": 14,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                500.0,
+                429.0,
+                566.0,
+                442.2
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "34.56%"
+            }
+          ],
+          "text": "34.56%"
+        },
+        {
+          "bbox": [
+            72.0,
+            489.0,
+            281.0,
+            502.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 15,
+          "reading_order": 15,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                489.0,
+                281.0,
+                502.2
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约情形。"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约情形。"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 16,
+          "reading_order": 16,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "3"
+            }
+          ],
+          "text": "3"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 17,
+          "reading_order": 17,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 4,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            56.0,
+            200.0,
+            75.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                56.0,
+                200.0,
+                75.2
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 16.0,
+              "text": "第二节 财务信息"
+            }
+          ],
+          "text": "第二节 财务信息"
+        },
+        {
+          "bbox": [
+            72.0,
+            86.0,
+            184.0,
+            102.8
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                86.0,
+                184.0,
+                102.8
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 14.0,
+              "text": "一、主要会计数据"
+            }
+          ],
+          "text": "一、主要会计数据"
+        },
+        {
+          "bbox": [
+            72.0,
+            115.5,
+            184.5,
+            130.5
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                115.5,
+                184.5,
+                130.5
+              ],
+              "char_end": 9,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 12.5,
+              "text": "（一）资产负债情况"
+            }
+          ],
+          "text": "（一）资产负债情况"
+        },
+        {
+          "bbox": [
+            72.0,
+            149.0,
+            336.0,
+            162.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                149.0,
+                336.0,
+                162.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。C"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。C"
+        },
+        {
+          "bbox": [
+            72.0,
+            171.0,
+            347.0,
+            184.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                171.0,
+                347.0,
+                184.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。C"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。C"
+        },
+        {
+          "bbox": [
+            72.0,
+            193.0,
+            347.0,
+            206.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 6,
+          "reading_order": 6,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                193.0,
+                347.0,
+                206.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。C"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。C"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 7,
+          "reading_order": 7,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "4"
+            }
+          ],
+          "text": "4"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 8,
+          "reading_order": 8,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 5,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            56.0,
+            200.0,
+            75.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                56.0,
+                200.0,
+                75.2
+              ],
+              "char_end": 8,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 16.0,
+              "text": "第三节 其他事项"
+            }
+          ],
+          "text": "第三节 其他事项"
+        },
+        {
+          "bbox": [
+            72.0,
+            86.0,
+            156.0,
+            102.8
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                86.0,
+                156.0,
+                102.8
+              ],
+              "char_end": 6,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 14.0,
+              "text": "一、主要业务"
+            }
+          ],
+          "text": "一、主要业务"
+        },
+        {
+          "bbox": [
+            72.0,
+            115.5,
+            159.5,
+            130.5
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                115.5,
+                159.5,
+                130.5
+              ],
+              "char_end": 7,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 12.5,
+              "text": "（一）业务构成"
+            }
+          ],
+          "text": "（一）业务构成"
+        },
+        {
+          "bbox": [
+            72.0,
+            149.0,
+            336.0,
+            162.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                149.0,
+                336.0,
+                162.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。D"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。D"
+        },
+        {
+          "bbox": [
+            72.0,
+            171.0,
+            347.0,
+            184.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                171.0,
+                347.0,
+                184.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。D"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。D"
+        },
+        {
+          "bbox": [
+            72.0,
+            193.0,
+            347.0,
+            206.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 6,
+          "reading_order": 6,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                193.0,
+                347.0,
+                206.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。D"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。D"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 7,
+          "reading_order": 7,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "5"
+            }
+          ],
+          "text": "5"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 8,
+          "reading_order": 8,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 6,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            109.0,
+            336.0,
+            122.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                109.0,
+                336.0,
+                122.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。E"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。E"
+        },
+        {
+          "bbox": [
+            72.0,
+            131.0,
+            347.0,
+            144.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                131.0,
+                347.0,
+                144.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。E"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。E"
+        },
+        {
+          "bbox": [
+            72.0,
+            153.0,
+            347.0,
+            166.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                153.0,
+                347.0,
+                166.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。E"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。E"
+        },
+        {
+          "bbox": [
+            72.0,
+            317.5,
+            159.5,
+            332.5
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                317.5,
+                159.5,
+                332.5
+              ],
+              "char_end": 7,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 12.5,
+              "text": "（一）成本分析"
+            }
+          ],
+          "text": "（一）成本分析"
+        },
+        {
+          "bbox": [
+            72.0,
+            349.0,
+            347.0,
+            362.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                349.0,
+                347.0,
+                362.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。E2"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。E2"
+        },
+        {
+          "bbox": [
+            72.0,
+            371.0,
+            358.0,
+            384.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 6,
+          "reading_order": 6,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                371.0,
+                358.0,
+                384.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。E2"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。E2"
+        },
+        {
+          "bbox": [
+            72.0,
+            393.0,
+            358.0,
+            406.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 7,
+          "reading_order": 7,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                393.0,
+                358.0,
+                406.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。E2"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。E2"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 8,
+          "reading_order": 8,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "6"
+            }
+          ],
+          "text": "6"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 9,
+          "reading_order": 9,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 7,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            139.0,
+            336.0,
+            152.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                139.0,
+                336.0,
+                152.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。F"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。F"
+        },
+        {
+          "bbox": [
+            72.0,
+            161.0,
+            347.0,
+            174.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                161.0,
+                347.0,
+                174.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。F"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。F"
+        },
+        {
+          "bbox": [
+            72.0,
+            183.0,
+            347.0,
+            196.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                183.0,
+                347.0,
+                196.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。F"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。F"
+        },
+        {
+          "bbox": [
+            72.0,
+            309.0,
+            182.0,
+            322.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                309.0,
+                182.0,
+                322.2
+              ],
+              "char_end": 10,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "相关明细详见第三节。"
+            }
+          ],
+          "text": "相关明细详见第三节。"
+        },
+        {
+          "bbox": [
+            72.0,
+            339.0,
+            347.0,
+            352.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                339.0,
+                347.0,
+                352.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。F2"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。F2"
+        },
+        {
+          "bbox": [
+            72.0,
+            361.0,
+            358.0,
+            374.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 6,
+          "reading_order": 6,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                361.0,
+                358.0,
+                374.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。F2"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。F2"
+        },
+        {
+          "bbox": [
+            72.0,
+            383.0,
+            358.0,
+            396.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 7,
+          "reading_order": 7,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                383.0,
+                358.0,
+                396.2
+              ],
+              "char_end": 26,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。F2"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。F2"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 8,
+          "reading_order": 8,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "7"
+            }
+          ],
+          "text": "7"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 9,
+          "reading_order": 9,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 8,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    },
+    {
+      "has_text_layer": true,
+      "height": 842.0,
+      "lines": [
+        {
+          "bbox": [
+            300.0,
+            32.0,
+            452.0,
+            41.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "header",
+          "is_furniture": true,
+          "line_index": 0,
+          "reading_order": 0,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                300.0,
+                32.0,
+                452.0,
+                41.6
+              ],
+              "char_end": 19,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE BOND REPORT"
+            }
+          ],
+          "text": "FIXTURE BOND REPORT"
+        },
+        {
+          "bbox": [
+            72.0,
+            139.0,
+            336.0,
+            152.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 1,
+          "reading_order": 1,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                139.0,
+                336.0,
+                152.2
+              ],
+              "char_end": 24,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券募集资金已按约定用途使用，未发生变更。G"
+            }
+          ],
+          "text": "本期债券募集资金已按约定用途使用，未发生变更。G"
+        },
+        {
+          "bbox": [
+            72.0,
+            161.0,
+            347.0,
+            174.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 2,
+          "reading_order": 2,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                161.0,
+                347.0,
+                174.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "报告期内发行人主营业务稳定，不存在重大不利变化。G"
+            }
+          ],
+          "text": "报告期内发行人主营业务稳定，不存在重大不利变化。G"
+        },
+        {
+          "bbox": [
+            72.0,
+            183.0,
+            347.0,
+            196.2
+          ],
+          "column_index": 0,
+          "furniture_kind": null,
+          "is_furniture": false,
+          "line_index": 3,
+          "reading_order": 3,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                183.0,
+                347.0,
+                196.2
+              ],
+              "char_end": 25,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 11.0,
+              "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。G"
+            }
+          ],
+          "text": "本期债券付息兑付正常，未发生违约或延迟支付情形。G"
+        },
+        {
+          "bbox": [
+            520.0,
+            791.0,
+            529.0,
+            801.8
+          ],
+          "column_index": 0,
+          "furniture_kind": "page_number",
+          "is_furniture": true,
+          "line_index": 4,
+          "reading_order": 4,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                520.0,
+                791.0,
+                529.0,
+                801.8
+              ],
+              "char_end": 1,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 9.0,
+              "text": "8"
+            }
+          ],
+          "text": "8"
+        },
+        {
+          "bbox": [
+            72.0,
+            807.0,
+            184.0,
+            816.6
+          ],
+          "column_index": 0,
+          "furniture_kind": "footer",
+          "is_furniture": true,
+          "line_index": 5,
+          "reading_order": 5,
+          "schema_type": "LayoutLine",
+          "spans": [
+            {
+              "bbox": [
+                72.0,
+                807.0,
+                184.0,
+                816.6
+              ],
+              "char_end": 14,
+              "char_start": 0,
+              "font": "Heiti",
+              "is_bold": false,
+              "schema_type": "LayoutSpan",
+              "size": 8.0,
+              "text": "FIXTURE FOOTER"
+            }
+          ],
+          "text": "FIXTURE FOOTER"
+        }
+      ],
+      "page_number": 9,
+      "rotation": 0,
+      "schema_type": "LayoutPage",
+      "width": 595.0
+    }
+  ],
+  "schema_type": "PageLayout",
+  "schema_version": "pl-3",
+  "source_file_sha256": "d2404f674f81e78873cc62dc7cb1eff76a5d02230b97d95ad6028a8233381fb8"
+}
